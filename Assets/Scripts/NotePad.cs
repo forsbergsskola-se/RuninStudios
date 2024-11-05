@@ -28,4 +28,20 @@ public class NotePad : MonoBehaviour
         other.GetComponent<Note>().isOnTrigger = state;
     }
 
+    public void NotePadPressedRed()
+    {
+        Debug.Log("Red Button Pressed!");
+
+    } 
+    public void NotePadPressedBlue()
+    {
+        Debug.Log("Blue Button Pressed!");
+
+    }
+    public void NotePadPressedGreen()
+    {
+        Debug.Log("Green Button Pressed!");
+
+    }
+
 }

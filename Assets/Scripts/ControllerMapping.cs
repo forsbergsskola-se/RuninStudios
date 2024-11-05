@@ -11,8 +11,17 @@ public class ControllerMapping : MonoBehaviour
     public Button green;
     #endregion
 
-    public void buttonPress()
+    [SerializeField] private NotePad notePad;
+    public void buttonPressRed()
     {
-        Debug.Log("Button Pressed!");
+        notePad.NotePadPressedRed();
+    }
+    public void buttonPressBlue()
+    {
+        notePad.NotePadPressedBlue();
+    }
+    public void buttonPressGreen()
+    {
+        notePad.NotePadPressedGreen();
     }
 }
