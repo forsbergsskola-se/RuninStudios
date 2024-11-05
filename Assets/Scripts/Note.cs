@@ -7,6 +7,7 @@ public class Note : MonoBehaviour
     public Vector3 direction = Vector3.forward; // Direction of movement
     public float speed = 5f;                    // Speed of movement
     public bool isOnTrigger;
+    public string ID;
     
     void Update()
     {

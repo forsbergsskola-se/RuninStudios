@@ -10,7 +10,7 @@ public class NotePad : MonoBehaviour
         if (other.tag == "Note")
         {
             TriggerFlip(other, true);
-            Debug.Log("Trigger ON!");
+            Debug.Log($"{other.GetComponent<Note>().ID}: Trigger ON!");
         }
     }
 
@@ -19,7 +19,7 @@ public class NotePad : MonoBehaviour
         if (other.tag == "Note")
         {
             TriggerFlip(other, false);
-            Debug.Log("Trigger OFF!");
+            Debug.Log($"{other.GetComponent<Note>().ID}: Trigger OFF!");
         }
     }
 
