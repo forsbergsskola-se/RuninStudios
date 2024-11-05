@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4379729474904051833}
   - component: {fileID: 4538788092865240316}
   - component: {fileID: 1270881029259492549}
+  - component: {fileID: 2805135427805792929}
   m_Layer: 0
   m_Name: NoteGiver
   m_TagString: Untagged
@@ -105,3 +106,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2805135427805792929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220500748262669756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562b9248c17d54626b19ca91eeeae3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notePrefab: {fileID: -6090039318542612508, guid: 0fa94436d52891b47bc90ccd9083a946, type: 3}
+  noteSpawnInterval: 1
