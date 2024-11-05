@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotePad : MonoBehaviour
+public class NoteReceiver : MonoBehaviour
 {
     private GameObject redNote;
     private GameObject blueNote;
@@ -68,15 +68,12 @@ public class NotePad : MonoBehaviour
             switch(other.GetComponent<Note>().ID)
             {
                 case "RED":
-                    redNote.GetComponent<Note>().isOnTrigger = state;
                     redNote = null;
                     break;
                 case "BLUE":
-                    blueNote.GetComponent<Note>().isOnTrigger = state;
                     blueNote = null;
                     break;
                 case "GREEN":
-                    greenNote.GetComponent<Note>().isOnTrigger = state;
                     greenNote = null;
                     break;
             }

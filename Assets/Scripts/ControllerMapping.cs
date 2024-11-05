@@ -6,17 +6,17 @@ using UnityEngine.UIElements;
 public class ControllerMapping : MonoBehaviour
 {
     
-    [SerializeField] private NotePad notePad;
+    [SerializeField] private NoteReceiver noteReciever;
     public void buttonPressRed()
     {
-        notePad.NotePadPressedRed();
+        noteReciever.NotePadPressedRed();
     }
     public void buttonPressBlue()
     {
-        notePad.NotePadPressedBlue();
+        noteReciever.NotePadPressedBlue();
     }
     public void buttonPressGreen()
     {
-        notePad.NotePadPressedGreen();
+        noteReciever.NotePadPressedGreen();
     }
 }
