@@ -5,12 +5,7 @@ using UnityEngine.UIElements;
 
 public class ControllerMapping : MonoBehaviour
 {
-    #region GameplayMapping
-    public Button red;
-    public Button blue;
-    public Button green;
-    #endregion
-
+    
     [SerializeField] private NotePad notePad;
     public void buttonPressRed()
     {
