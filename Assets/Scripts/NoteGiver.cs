@@ -42,7 +42,7 @@ public class NoteGiver : MonoBehaviour
                 break;
             case 2:
                 Note greenNote = Instantiate(notePrefab,greenSlot.transform.position,Quaternion.Euler(transform.rotation.x, transform.rotation.y+180, transform.rotation.z)); // Instantiate the Note prefab 
-                greenNote.ID = "BLUE";
+                greenNote.ID = "GREEN";
                 greenNote.gameObject.SetActive(true);
                 break;
         }

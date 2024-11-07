@@ -11,7 +11,7 @@ public class NoteReceiver : MonoBehaviour
 
     [SerializeField] private ParticleSystem redSuccess;
     [SerializeField] private ParticleSystem blueSuccess;
-    [SerializeField] private ParticleSystem GreenSuccess;
+    [SerializeField] private ParticleSystem greenSuccess;
 
     
     private void OnTriggerEnter(Collider other)
@@ -21,18 +21,6 @@ public class NoteReceiver : MonoBehaviour
             TriggerFlip(other, true);
             Debug.Log($"{other.GetComponent<Note>().ID}: Trigger ON!");
             
-            switch(other.GetComponent<Note>().ID)
-            {
-                case "Red":
-                    redNote = other.gameObject;
-                    break;
-                case "Blue":
-                    blueNote = other.gameObject;
-                    break;
-                case "Green":
-                    greenNote = other.gameObject;
-                    break;
-            }
         }
     }
 
@@ -82,27 +70,62 @@ public class NoteReceiver : MonoBehaviour
 
     public void NotePadPressedRed()
     {
-        if (redNote.GetComponent<Note>().isOnTrigger)
+        try
         {
-            redNote.SetActive(false);  // Disable the red note GameObject
-            redSuccess.Play();
+            if (redNote != null && redNote.GetComponent<Note>().isOnTrigger)
+            {
+                // Reset the particle system by re-enabling its GameObject
+                redSuccess.gameObject.SetActive(false);
+                redSuccess.gameObject.SetActive(true);
+
+                redSuccess.Play();
+                redNote.SetActive(false); // Disable the red note GameObject
+                redNote = null;
+            }
         }
-    } 
-    public void NotePadPressedBlue()
-    {
-        if (blueNote.GetComponent<Note>().isOnTrigger)
-        {
-            blueNote.SetActive(false);  // Disable the blue note GameObject
-            blueSuccess.Play();
-        }
-    }
-    public void NotePadPressedGreen()
-    {
-        if (greenNote.GetComponent<Note>().isOnTrigger)
-        {
-            greenNote.SetActive(false);  // Disable the green note GameObject
-            GreenSuccess.Play();
+        catch 
+        { 
+            Debug.Log("MISSED NOTE!"); 
         }
     }
 
+    public void NotePadPressedBlue()
+    {
+        try
+        {
+            if (blueNote != null && blueNote.GetComponent<Note>().isOnTrigger)
+            {
+                blueSuccess.gameObject.SetActive(false);
+                blueSuccess.gameObject.SetActive(true);
+
+                blueSuccess.Play();
+                blueNote.SetActive(false); // Disable the blue note GameObject
+                blueNote = null;
+            }
+        }
+        catch 
+        { 
+            Debug.Log("MISSED NOTE!"); 
+        }
+    }
+
+    public void NotePadPressedGreen()
+    {
+        try
+        {
+            if (greenNote != null && greenNote.GetComponent<Note>().isOnTrigger)
+            {
+                greenSuccess.gameObject.SetActive(false);
+                greenSuccess.gameObject.SetActive(true);
+
+                greenSuccess.Play();
+                greenNote.SetActive(false); // Disable the green note GameObject
+                greenNote = null;
+            }
+        }
+        catch 
+        { 
+            Debug.Log("MISSED NOTE!"); 
+        }
+    }
 }
