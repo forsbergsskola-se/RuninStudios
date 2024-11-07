@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,7 +46,6 @@ public class NoteGiver : MonoBehaviour
                 greenNote.gameObject.SetActive(true);
                 break;
         }
-        
-        
     }
+    
 }
