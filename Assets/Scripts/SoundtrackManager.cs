@@ -9,8 +9,10 @@ using FMOD.Studio;
 public class SoundtrackManager : MonoBehaviour
 {
     [EventRef] public string soundTrackEvent = "event:/1730736442085ioqbhouk";
-
     private EventInstance soundTrackInstance;
+
+    public NoteGiver noteGiver;
+    [SerializeField] private Note notePrefab;
 
     void Start()
     {
@@ -18,13 +20,13 @@ public class SoundtrackManager : MonoBehaviour
         soundTrackInstance = RuntimeManager.CreateInstance(soundTrackEvent);
 
         // Assign the callback function to the instance
-        soundTrackInstance.setCallback(new FMOD.Studio.EVENT_CALLBACK(OnSoundtrackEventCallback), FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
+        soundTrackInstance.setCallback((OnSoundtrackEventCallback), EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
 
         // Start the event
         soundTrackInstance.start();
     }
 
-    private static FMOD.RESULT OnSoundtrackEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, IntPtr intPtr, IntPtr parameterPtr)
+    private FMOD.RESULT OnSoundtrackEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, IntPtr intPtr, IntPtr parameterPtr)
     {
         // Check if this callback is for a marker
         if (type == FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER)
@@ -36,14 +38,14 @@ public class SoundtrackManager : MonoBehaviour
             // Call functions based on marker names
             switch (marker.name)
             {
-                case "ChorusStart":
-                    // Invoke Unity function for ChorusStart
+                case "Red Note":
+                    noteGiver.SendNote(notePrefab, "RED");
+                    break; 
+                case "Blue Note":
+                    noteGiver.SendNote(notePrefab, "BLUE");
                     break;
-                case "Drop":
-                    // Invoke Unity function for Drop
-                    break;
-                case "VerseEnd":
-                    // Invoke Unity function for VerseEnd
+                case "Green Note":
+                    noteGiver.SendNote(notePrefab, "GREEN");
                     break;
             }
         }

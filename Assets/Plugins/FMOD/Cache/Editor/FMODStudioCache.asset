@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/FmodSoundtracks/fmodTestTrack2/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638665822608287620
+  lastModified: 638665913591969805
   FileSizes:
   - Name: Desktop
     Value: 770
@@ -36,15 +36,35 @@ MonoBehaviour:
   - {fileID: -3038442159679807727}
   - {fileID: 5169797214450085721}
   EditorEvents:
-  - {fileID: 4412362233440807628}
+  - {fileID: 6510625626295405274}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5169797214450085721}
   StringsBanks:
   - {fileID: -3038442159679807727}
-  cacheTime: 638665822608287620
+  cacheTime: 638665913591969805
   cacheVersion: 131620
---- !u!114 &4412362233440807628
+--- !u!114 &5169797214450085721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundtracks/fmodTestTrack2/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638665913591786507
+  FileSizes:
+  - Name: Desktop
+    Value: 1632768
+  Exists: 1
+--- !u!114 &6510625626295405274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,23 +91,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 131328
---- !u!114 &5169797214450085721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/FmodSoundtracks/fmodTestTrack2/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638665822608171479
-  FileSizes:
-  - Name: Desktop
-    Value: 1632640
-  Exists: 1
