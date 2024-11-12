@@ -9,8 +9,12 @@ public class Note : MonoBehaviour
     public float speed = 5f; // Speed of movement
     public bool isOnTrigger;
     public string ID;
-    private int destroyAfter = 5; //Trigger this when the button har pressed correctly 
-    
+    private float destroyAfter = 5f; //Trigger this when the button har pressed correctly 
+   
+    private void OnEnable()
+    {
+        Invoke("Deactivate", destroyAfter); // Deactivate note after a set time
+    }
     void Update()
     {
         Move();
@@ -19,6 +23,23 @@ public class Note : MonoBehaviour
     private void Move()
     {
         transform.Translate(direction * speed * Time.deltaTime);
+    }
+    
+    public void TriggerHit()
+    {
+        CancelInvoke(); // Cancel the auto-deactivate
+        Deactivate(); // Manually deactivate the note on hit
+    }
+    
+    private void Deactivate()
+    {
+        gameObject.SetActive(false); // Recycle the note back into the pool
+    }
+    public void ResetNote(Vector3 startPosition, string colorID)
+    {
+        transform.position = startPosition;
+        ID = colorID;
+        gameObject.SetActive(true);
     }
 }
 
