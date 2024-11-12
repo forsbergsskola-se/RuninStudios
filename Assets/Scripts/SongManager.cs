@@ -11,16 +11,30 @@ public class SongManager : MonoBehaviour
    
     float secPerBeat; //the duration of a beat
     
+    float dsptimesong; // Time (in seconds) when the song started
+    float bpm; // Beats per minute of the song
+    float[] notes; // Array of note positions in beats
+    int nextIndex = 0; // Index of the next note to be spawned
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        secPerBeat = 60f / bpm; //calculated secunds per beat
+        dsptimesong = (float)AudioSettings.dspTime; //record the start time
+        GetComponent<AudioSource>().Play();//starts the song
     }
 
     // Update is called once per frame
     void Update()
     {
+        songPosition = (float)(AudioSettings.dspTime - dsptimesong);//ensures precise timing
+        songPosInBeats = songPosition / secPerBeat;
         
+        if (GetComponent<AudioSource>() == null) 
+        {
+            Debug.Log("AudioSource not found!");
+        }
     }
+    
+    
 }
