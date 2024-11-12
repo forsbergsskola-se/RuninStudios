@@ -10,7 +10,6 @@ public class Note : MonoBehaviour
     public bool isOnTrigger;
     public string ID;
     private int destroyAfter = 5; //Trigger this when the button har pressed correctly 
-   
     
     void Update()
     {
