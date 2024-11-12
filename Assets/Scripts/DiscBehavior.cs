@@ -29,7 +29,7 @@ public class DiscBehavior : MonoBehaviour, IPointerDownHandler, IDragHandler, IP
         {
             Vector2 currentTouchPosition = eventData.position;
             float deltaY = currentTouchPosition.y - startTouchPosition.y;
-            if (Mathf.Abs(deltaY) > 20) // Threshold for sensitivity
+            if (Mathf.Abs(deltaY) > 10) // Threshold for sensitivity
             {
                 if (deltaY > 0 && !lastDirectionWasUp)
                 {
@@ -56,13 +56,13 @@ public class DiscBehavior : MonoBehaviour, IPointerDownHandler, IDragHandler, IP
 
     private void OnDragUp()
     {
-        Debug.Log("User dragged up on the disc button!");
+        Debug.Log($"User dragged up on the disc button!\nscratchCount: {scratchCount}");
         scratchCount++;
     }
 
     private void OnDragDown()
     {
-        Debug.Log("User dragged down on the disc button!");
+        Debug.Log($"User dragged down on the disc button!\nscratchCount: {scratchCount}");
         scratchCount++;
     }
 

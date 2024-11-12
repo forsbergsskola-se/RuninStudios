@@ -1555,6 +1555,7 @@ GameObject:
   - component: {fileID: 1814934804082120222}
   - component: {fileID: 5694512368309937424}
   - component: {fileID: 7271984649364837159}
+  - component: {fileID: 4093563537750725137}
   m_Layer: 0
   m_Name: ScratchNote
   m_TagString: Note
@@ -1649,3 +1650,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4093563537750725137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199998963476345838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15baa1fb79d78d41957546585bab541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: -1}
+  speed: 15
+  isOnTrigger: 0
+  ID: DISC

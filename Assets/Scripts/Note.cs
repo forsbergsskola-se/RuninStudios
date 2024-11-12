@@ -9,7 +9,7 @@ public class Note : MonoBehaviour
     public float speed = 5f; // Speed of movement
     public bool isOnTrigger;
     public string ID;
-    private float destroyAfter = 5f; //Trigger this when the button har pressed correctly 
+    private float destroyAfter = 10f; //Trigger this when the button har pressed correctly 
    
     private void OnEnable()
     {
