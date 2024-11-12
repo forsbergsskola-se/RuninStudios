@@ -8,6 +8,7 @@ public class NoteGiver : MonoBehaviour
 
 {
     [SerializeField] private Note notePrefab;
+    [SerializeField] private GameObject[] slots;
     [SerializeField] private GameObject redSlot;
     [SerializeField] private GameObject blueSlot;
     [SerializeField] private GameObject greenSlot;
