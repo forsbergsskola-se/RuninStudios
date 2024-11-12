@@ -3,18 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using FMODUnity;
-using FMOD.Studio;
 
 public class SoundtrackManager : MonoBehaviour
 {
-    [EventRef] public string soundTrackEvent = "event:/1730736442085ioqbhouk";
+    /*[EventRef] public string soundTrackEvent = "event:/1730736442085ioqbhouk";
     private EventInstance soundTrackInstance;
 
     public NoteGiver noteGiver;
     [SerializeField] private Note notePrefab;
 
-    /*void Start()
+    void Start()
     {
         // Create the event instance and start it
         soundTrackInstance = RuntimeManager.CreateInstance(soundTrackEvent);
