@@ -15,6 +15,7 @@ public class SongManager : MonoBehaviour
     float bpm; // Beats per minute of the song
     float[] notes; // Array of note positions in beats
     int nextIndex = 0; // Index of the next note to be spawned
+    [SerializeField] private NoteGiver noteGiver;
     
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,10 @@ public class SongManager : MonoBehaviour
         songPosition = (float)(AudioSettings.dspTime - dsptimesong);//ensures precise timing
         songPosInBeats = songPosition / secPerBeat;
         
-        if (GetComponent<AudioSource>() == null) 
+        if (nextIndex < notes.Length && notes [nextIndex] < songPosInBeats)
         {
-            Debug.Log("AudioSource not found!");
+            noteGiver.SpawnNote();
+            nextIndex++;
         }
     }
     

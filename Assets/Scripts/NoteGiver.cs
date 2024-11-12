@@ -30,17 +30,7 @@ public class NoteGiver : MonoBehaviour
             notePool.Add(note);
         }
     }
-
-    private void Update()
-    {
-        noteSpawnTimer += Time.deltaTime;
-        if (noteSpawnTimer >= noteSpawnInterval)
-        {
-            noteSpawnTimer = 0f;
-            SpawnNote();
-        }
-    }
-
+    
     private Note GetPooledNote()
     {
         foreach (Note note in notePool)
@@ -53,7 +43,7 @@ public class NoteGiver : MonoBehaviour
         return null;
     }
     
-    private void SpawnNote()
+    public void SpawnNote()
     {
         
         int randomIndex = Random.Range(0, slots.Length);
