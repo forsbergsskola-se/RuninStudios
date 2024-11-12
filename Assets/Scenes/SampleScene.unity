@@ -1779,7 +1779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2805135427805792929, guid: 4eca0f2b4dd5e49d9bdc2098b4677b46, type: 3}
       propertyPath: noteSpawnInterval
-      value: 1.03
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2805135427805792929, guid: 4eca0f2b4dd5e49d9bdc2098b4677b46, type: 3}
       propertyPath: notePrefabs.Array.size
