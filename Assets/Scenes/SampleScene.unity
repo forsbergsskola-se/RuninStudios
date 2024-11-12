@@ -915,7 +915,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: buttonPressBlue
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 346002577165893123, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -940,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c578de0f4286884eb2bf25ce9f111aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controllerMapping: {fileID: 1473947424}
 --- !u!1 &2120772403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1144,7 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1014728223}
   - {fileID: 2120772406}
+  - {fileID: 1950342131}
   - {fileID: 1473947425}
   - {fileID: 6679508848606262615}
   - {fileID: 1741570279}
@@ -1149,4 +1152,3 @@ SceneRoots:
   - {fileID: 732036591}
   - {fileID: 2713125065024092271}
   - {fileID: 1857108986}
-  - {fileID: 1950342131}

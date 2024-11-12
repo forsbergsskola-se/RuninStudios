@@ -8,11 +8,12 @@ public class NoteReceiver : MonoBehaviour
     private GameObject redNote;
     private GameObject blueNote;
     private GameObject greenNote;
-
+    private GameObject scratchNote;
+    
     [SerializeField] private ParticleSystem redSuccess;
     [SerializeField] private ParticleSystem blueSuccess;
     [SerializeField] private ParticleSystem greenSuccess;
-
+    [SerializeField] private ParticleSystem scratchSuccess;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,6 @@ public class NoteReceiver : MonoBehaviour
         {
             TriggerFlip(other, true);
             Debug.Log($"{other.GetComponent<Note>().ID}: Trigger ON!");
-            
         }
     }
 
@@ -49,6 +49,9 @@ public class NoteReceiver : MonoBehaviour
                 case "GREEN":
                     greenNote = other.gameObject;
                     break;
+                case "DISC":
+                    scratchNote = other.gameObject;
+                    break;
             }
         }
         else
@@ -63,6 +66,9 @@ public class NoteReceiver : MonoBehaviour
                     break;
                 case "GREEN":
                     greenNote = null;
+                    break;
+                case "DISC":
+                    scratchNote = null;
                     break;
             }
         }
@@ -121,6 +127,26 @@ public class NoteReceiver : MonoBehaviour
                 greenSuccess.Play();
                 greenNote.SetActive(false); // Disable the green note GameObject
                 greenNote = null;
+            }
+        }
+        catch 
+        { 
+            Debug.Log("MISSED NOTE!"); 
+        }
+    }
+
+    public void NotePadScratch()
+    {
+        try
+        {
+            if (scratchNote != null && scratchNote.GetComponent<Note>().isOnTrigger)
+            {
+                scratchNote.gameObject.SetActive(false);
+                scratchNote.gameObject.SetActive(true);
+
+                scratchSuccess.Play();
+                scratchNote.SetActive(false); // Disable the disc note GameObject
+                scratchNote = null;
             }
         }
         catch 
