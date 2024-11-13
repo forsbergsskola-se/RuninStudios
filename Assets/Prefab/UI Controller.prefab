@@ -168,11 +168,11 @@ RectTransform:
   - {fileID: 1733402179014424346}
   m_Father: {fileID: 9012610516145941421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1074, y: -357}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -90.99988, y: -297.0001}
   m_SizeDelta: {x: 300, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2485387830014404952
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -437,11 +437,11 @@ RectTransform:
   - {fileID: 3086787766530138840}
   m_Father: {fileID: 9012610516145941421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1074, y: -66}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -90.99988, y: -6.000046}
   m_SizeDelta: {x: 300, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &880863268821527749
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -724,7 +724,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -747,12 +747,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 5003108226628587616}
   - component: {fileID: 5987873618885890606}
   - component: {fileID: 8943086774968303353}
-  - component: {fileID: 346002577165893123}
+  - component: {fileID: 7406969422280700384}
   m_Layer: 5
   m_Name: Disc
   m_TagString: Untagged
@@ -804,18 +804,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4452796238087701880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -56}
-  m_LocalScale: {x: 7.4628077, y: 7.4628077, z: 7.4628077}
+  m_LocalPosition: {x: 0, y: 0, z: -56.000008}
+  m_LocalScale: {x: 5.41492, y: 5.41492, z: 5.41492}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6434518528585756708}
   m_Father: {fileID: 9012610516145941421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1377, y: -40}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -280, y: -55}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5991398618324919381
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.89754987, b: 0.0047169924, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &346002577165893123
+--- !u!114 &7406969422280700384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -925,6 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c578de0f4286884eb2bf25ce9f111aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controllerMapping: {fileID: 0}
 --- !u!1 &5923495132965011248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,11 +1094,11 @@ RectTransform:
   - {fileID: 3849081310293927760}
   m_Father: {fileID: 9012610516145941421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1074, y: 215}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -91, y: 275}
   m_SizeDelta: {x: 300, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &5439031745293676721
 CanvasRenderer:
   m_ObjectHideFlags: 0
