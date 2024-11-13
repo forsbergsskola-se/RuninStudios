@@ -8,7 +8,6 @@ public class NoteGiver : MonoBehaviour
 
 {
     [SerializeField] private Note notePrefab;
-    [SerializeField] private GameObject[] slots;
     [SerializeField] private GameObject redSlot;
     [SerializeField] private GameObject blueSlot;
     [SerializeField] private GameObject greenSlot;
@@ -45,12 +44,26 @@ public class NoteGiver : MonoBehaviour
     
     public void SpawnNote()
     {
-        
-        int randomIndex = Random.Range(0, slots.Length);
+        int randomIndex = Random.Range(0, 3);
         Note newNote = GetPooledNote();
-        if (newNote != null )
-        {
-            newNote.ResetNote(slots[randomIndex].transform.position, slots[randomIndex].name.ToUpper());
+        
+            switch (randomIndex)
+            {
+                case 0:
+                    newNote.ResetNote(redSlot.transform.position, "RED");
+                    Debug.Log("Spawning red");
+                    break;
+                case 1:
+                    newNote.ResetNote(blueSlot.transform.position, "BLUE");
+                    Debug.Log("Spawning blue");
+                    break;
+                case 2:
+                    newNote.ResetNote(greenSlot.transform.position, "GREEN");
+                    Debug.Log("Spawning green");
+                    break;
+                
+            }
+            //newNote.ResetNote(slots[randomIndex].transform.position, slots[randomIndex].name.ToUpper());
         }
     }
     /*
@@ -105,4 +118,3 @@ public class NoteGiver : MonoBehaviour
         }
         note.ID = ID;
     }*/
-}
