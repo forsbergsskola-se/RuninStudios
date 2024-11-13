@@ -16,8 +16,7 @@ public class NoteGiver : MonoBehaviour
     private List<Note> notePool;
     private int poolSize = 208;
 
-
-    private void Start()
+    public void SettingPool()
     {
         notePool = new List<Note>();
         for (int i = 0; i < poolSize; i++)

@@ -14,9 +14,10 @@ public class SongManager : MonoBehaviour
     int nextIndex = 0; // Index of the next note to be spawned
     [SerializeField] private NoteGiver noteGiver;
     
-    // Start is called before the first frame update
     private void Start()
     {
+        noteGiver.SettingPool();
+
         secPerBeat = bpm / 60f; //calculated seconds per beat
         dsptimesong = (float)AudioSettings.dspTime; //record the start time
         audioSource.Play();
