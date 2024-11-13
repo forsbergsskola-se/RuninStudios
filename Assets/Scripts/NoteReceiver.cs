@@ -173,7 +173,6 @@ public class NoteReceiver : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         greenTile.transform.position = initialPosition;
     }
-
     public void NotePadScratch()
     {
         try

@@ -17,24 +17,32 @@ public class SongManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        secPerBeat = 60f / bpm; //calculated secunds per beat
+        secPerBeat = bpm / 60f; //calculated seconds per beat
         dsptimesong = (float)AudioSettings.dspTime; //record the start time
         audioSource.Play();
-        Debug.Log("Song started");
-    }
 
-    // Update is called once per frame
-    void Update()
+        var totalNotes = secPerBeat * audioSource.clip.length;
+        notes = new float[(int)totalNotes];
+        Debug.Log("Song started");
+        StartCoroutine(RhythmicTrigger());
+    }
+    
+    private IEnumerator RhythmicTrigger()
     {
-        songPosition = (float)(AudioSettings.dspTime - dsptimesong);//ensures precise timing
-        songPosInBeats = songPosition / secPerBeat;
-        
-        if (nextIndex < notes.Length && notes [nextIndex] < songPosInBeats)
+        while (true)
         {
-            noteGiver.SpawnNote();
-            nextIndex++;
+            songPosition = (float)(AudioSettings.dspTime - dsptimesong); // ensures precise timing
+            songPosInBeats = songPosition / secPerBeat;
+
+            if (nextIndex < notes.Length && notes[nextIndex] < songPosInBeats)
+            {
+                noteGiver.SpawnNote();
+                nextIndex++;
+            }
+
+            // Calculate wait time to stay in rhythm
+            float nextBeatTime = secPerBeat - (songPosition % secPerBeat);
+            yield return new WaitForSeconds(nextBeatTime);
         }
     }
-    
-    
 }

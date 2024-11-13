@@ -5,7 +5,6 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class NoteGiver : MonoBehaviour
-
 {
     [SerializeField] private Note notePrefab;
     [SerializeField] private GameObject redSlot;
@@ -15,13 +14,12 @@ public class NoteGiver : MonoBehaviour
     public float noteSpawnInterval = 1f;
     private float noteSpawnTimer = 0f;
     private List<Note> notePool;
-    private int poolSize;
+    private int poolSize = 208;
 
 
     private void Start()
     {
         notePool = new List<Note>();
-
         for (int i = 0; i < poolSize; i++)
         {
             Note note = Instantiate(notePrefab, transform);
