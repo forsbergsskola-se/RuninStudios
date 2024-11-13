@@ -47,7 +47,7 @@ public class DiscBehavior : MonoBehaviour, IPointerDownHandler, IDragHandler, IP
             }
         }
 
-        if (scratchCount >= 4)
+        if (scratchCount >= 2)
         {
             Debug.Log("Full Scratch!");
             controllerMapping.Scratch();
