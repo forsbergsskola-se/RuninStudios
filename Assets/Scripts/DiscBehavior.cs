@@ -51,6 +51,7 @@ public class DiscBehavior : MonoBehaviour, IPointerDownHandler, IDragHandler, IP
         {
             Debug.Log("Full Scratch!");
             controllerMapping.Scratch();
+            scratchCount = 0;
         }
     }
 

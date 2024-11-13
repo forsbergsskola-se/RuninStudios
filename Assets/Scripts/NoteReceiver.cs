@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NoteReceiver : MonoBehaviour
@@ -9,6 +10,10 @@ public class NoteReceiver : MonoBehaviour
     private GameObject blueNote;
     private GameObject greenNote;
     private GameObject scratchNote;
+
+    [SerializeField] private GameObject redTile;
+    [SerializeField] private GameObject blueTile;
+    [SerializeField] private GameObject greenTile;
     
     [SerializeField] private ParticleSystem redSuccess;
     [SerializeField] private ParticleSystem blueSuccess;
@@ -76,6 +81,15 @@ public class NoteReceiver : MonoBehaviour
 
     public void NotePadPressedRed()
     {
+        StartCoroutine(RedRoutine());
+    }
+
+    private IEnumerator RedRoutine()
+    {
+        var initialPosition = redTile.transform.position;
+        var pressedPosition = initialPosition;
+        pressedPosition.y -= 0.3f;
+        redTile.transform.position = pressedPosition;
         try
         {
             if (redNote != null && redNote.GetComponent<Note>().isOnTrigger)
@@ -93,10 +107,21 @@ public class NoteReceiver : MonoBehaviour
         { 
             Debug.Log("MISSED NOTE!"); 
         }
+        yield return new WaitForSeconds(0.1f);
+        redTile.transform.position = initialPosition;
     }
 
     public void NotePadPressedBlue()
     {
+        StartCoroutine(BlueRoutine());
+    }
+
+    private IEnumerator BlueRoutine()
+    {
+        var initialPosition = blueTile.transform.position;
+        var pressedPosition = initialPosition;
+        pressedPosition.y -= 0.3f;
+        blueTile.transform.position = pressedPosition;
         try
         {
             if (blueNote != null && blueNote.GetComponent<Note>().isOnTrigger)
@@ -113,10 +138,21 @@ public class NoteReceiver : MonoBehaviour
         { 
             Debug.Log("MISSED NOTE!"); 
         }
+        yield return new WaitForSeconds(0.1f);
+        blueTile.transform.position = initialPosition;
     }
 
     public void NotePadPressedGreen()
     {
+        StartCoroutine(GreenRoutine());
+    }
+
+    private IEnumerator GreenRoutine()
+    {
+        var initialPosition = greenTile.transform.position;
+        var pressedPosition = initialPosition;
+        pressedPosition.y -= 0.3f;
+        greenTile.transform.position = pressedPosition;
         try
         {
             if (greenNote != null && greenNote.GetComponent<Note>().isOnTrigger)
@@ -133,6 +169,9 @@ public class NoteReceiver : MonoBehaviour
         { 
             Debug.Log("MISSED NOTE!"); 
         }
+
+        yield return new WaitForSeconds(0.1f);
+        greenTile.transform.position = initialPosition;
     }
 
     public void NotePadScratch()
