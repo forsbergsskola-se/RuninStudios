@@ -21,7 +21,7 @@ public class NoteGiver : MonoBehaviour
         notePool = new List<Note>();
         for (int i = 0; i < poolSize; i++)
         {
-            Note note = Instantiate(notePrefab, transform);
+            Note note = Instantiate(notePrefab, notePrefab.transform);
             note.gameObject.SetActive(false);
             notePool.Add(note);
         }
