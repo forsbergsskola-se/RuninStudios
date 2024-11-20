@@ -259,7 +259,7 @@ MonoBehaviour:
   - 6
   - 7
   maxMissedNotes: 3
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 1557141857}
   noteGiver: {fileID: 1133863032}
 --- !u!4 &364621289
 Transform:

@@ -53,6 +53,7 @@ public class SongManager : MonoBehaviour
     public void NoteMissed()
     {
         missedNotesCount++;
+        Debug.Log("Missed Notes Count called");
         if (missedNotesCount >= maxMissedNotes)
         {
             TriggerGameOver();
@@ -61,6 +62,7 @@ public class SongManager : MonoBehaviour
 
     private void TriggerGameOver()
     {
+        Debug.Log("TriggerGameOver() called!");
         audioSource.Stop();
         StopAllCoroutines();
         gameOverUI.SetActive(true);
