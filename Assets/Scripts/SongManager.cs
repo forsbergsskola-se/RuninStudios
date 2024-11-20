@@ -12,7 +12,7 @@ public class SongManager : MonoBehaviour
     [SerializeField] float bpm = 86f; // Beats per minute of the song
     [SerializeField] float[] notes; // timing info in terms of the beat of the song
     int nextIndex = 0; // Index of the next note to be spawned
-    [SerializeField] private int maxMissedNotes = 3;
+    [SerializeField] private int maxMissedNotes = 5;
     private int missedNotesCount = 0;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private NoteGiver noteGiver;

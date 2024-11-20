@@ -40,6 +40,9 @@ public class Note : MonoBehaviour
         {
             noteReceiver.TriggerFlip(this, false);
             Debug.Log("Note Passed");
+            FindObjectOfType<SongManager>().NoteMissed(); //Trigger the game over function in the Song Manager
+            Debug.Log("NoteMissedFunctionCalled");
+            Deactivate();
         }
     }
     
@@ -51,12 +54,9 @@ public class Note : MonoBehaviour
     
     private void Deactivate()
     {
-        if (!isOnTrigger) //if not is not hit by player
-        {
-            FindObjectOfType<SongManager>().NoteMissed(); //Trigger the game over function in the Song Manager
-        } 
         gameObject.SetActive(false); // Recycle the note back into the pool
     }
+    
     public void ResetNote(Vector3 startPosition, string colorID)
     {
         transform.position = startPosition;
