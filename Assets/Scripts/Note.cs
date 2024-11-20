@@ -46,6 +46,10 @@ public class Note : MonoBehaviour
     
     private void Deactivate()
     {
+        if (!isOnTrigger) //if not is not hit by player
+        {
+            FindObjectOfType<SongManager>().NoteMissed(); //Trigger the game over function in the Song Manager
+        } 
         gameObject.SetActive(false); // Recycle the note back into the pool
     }
     public void ResetNote(Vector3 startPosition, string colorID)
