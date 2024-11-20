@@ -32,13 +32,13 @@ public class Note : MonoBehaviour
         {
             noteReceiver.TriggerFlip(this, true);
         }
-        else if (noteTempZ < reciverTempZ - 0.8f)
+        else if (noteTempZ < reciverTempZ - 0.8f && this.gameObject.activeSelf)
         {
             noteReceiver.TriggerFlip(this, false);
             Debug.Log("Note Passed");
-            FindObjectOfType<SongManager>().NoteMissed(); //Trigger the game over function in the Song Manager
+            FindObjectOfType<CvsConverter>().NoteMissed(); //Trigger the game over function in the Song Manager
             Debug.Log("NoteMissedFunctionCalled");
-             Deactivate();
+            Deactivate();
         }
     }
     

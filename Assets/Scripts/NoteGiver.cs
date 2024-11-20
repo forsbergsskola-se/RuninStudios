@@ -39,12 +39,11 @@ public class NoteGiver : MonoBehaviour
         return null;
     }
     
-    public void SpawnNote()
+    public void SpawnNote(int colorID)
     {
-        int randomIndex = Random.Range(0, 3);
         Note newNote = GetPooledNote();
         
-            switch (randomIndex)
+            switch (colorID)
             {
                 case 0:
                     newNote.ResetNote(redSlot.transform.position, "RED");

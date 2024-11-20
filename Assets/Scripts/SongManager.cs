@@ -33,7 +33,6 @@ public class SongManager : MonoBehaviour
     
     private IEnumerator RhythmicTrigger()
     {
-        float nextBeatTime = secPerBeat - (songPosition % secPerBeat);
         while (true)
         {
             songPosition = (float)(AudioSettings.dspTime - dsptimesong); // ensures precise timing
@@ -41,11 +40,12 @@ public class SongManager : MonoBehaviour
 
             if (nextIndex < notes.Length && notes[nextIndex] < songPosInBeats)
             {
-                noteGiver.SpawnNote();
+                //noteGiver.SpawnNote();
                 nextIndex++;
             }
 
             // Calculate wait time to stay in rhythm
+            float nextBeatTime = secPerBeat - (songPosition % secPerBeat);
             yield return new WaitForSeconds(nextBeatTime);
         }
     }
