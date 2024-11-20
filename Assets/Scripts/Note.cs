@@ -9,13 +9,9 @@ public class Note : MonoBehaviour
     public float speed = 5f; // Speed of movement
     public bool isOnTrigger;
     public string ID;
-    private float destroyAfter = 20f; //Trigger this when the button har pressed correctly 
+    private float destroyAfter = 2f; //Trigger this when the button har pressed correctly 
     [SerializeField] private NoteReceiver noteReceiver;
     
-    private void OnEnable()
-    {
-        Invoke("Deactivate", destroyAfter); // Deactivate note after a set time
-    }
     void Update()
     {
         Move();
@@ -32,17 +28,17 @@ public class Note : MonoBehaviour
         float noteTempZ = this.transform.position.z;
         float reciverTempZ = noteReceiver.transform.position.z;
 
-        if (noteTempZ < reciverTempZ + 0.6f && noteTempZ > reciverTempZ - 0.6f)
+        if (noteTempZ < reciverTempZ + 0.6f && noteTempZ > reciverTempZ - 0.8f)
         {
             noteReceiver.TriggerFlip(this, true);
         }
-        else if (noteTempZ < reciverTempZ - 0.6f)
+        else if (noteTempZ < reciverTempZ - 0.8f)
         {
             noteReceiver.TriggerFlip(this, false);
             Debug.Log("Note Passed");
             FindObjectOfType<SongManager>().NoteMissed(); //Trigger the game over function in the Song Manager
             Debug.Log("NoteMissedFunctionCalled");
-            Deactivate();
+             Deactivate();
         }
     }
     
