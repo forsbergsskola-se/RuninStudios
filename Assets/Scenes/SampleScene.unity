@@ -23,9 +23,9 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 1.6
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -33,7 +33,7 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 256
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
@@ -96,8 +96,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 26b24e4adc5f84a41aa50b1531efaa68, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: cde13bf7a5c3f48f48a0bdc1a3503ce8, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -430,7 +430,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!108 &705507994
 Light:
@@ -443,14 +443,14 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -483,7 +483,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -804,7 +804,7 @@ GameObject:
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!20 &963194227
 Camera:
@@ -909,7 +909,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &1014728220
 MeshCollider:
@@ -1431,6 +1431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2587506510857068671, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -91
+      objectReference: {fileID: 0}
     - target: {fileID: 3988701083329466857, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_Name
       value: UI Controller
@@ -1447,6 +1451,10 @@ PrefabInstance:
       propertyPath: controllerMapping
       value: 
       objectReference: {fileID: 1473947424}
+    - target: {fileID: 8880494527721630535, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -91
+      objectReference: {fileID: 0}
     - target: {fileID: 9012610516145941421, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1630,7 +1638,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &2120772404
 MonoBehaviour:
@@ -1818,7 +1826,7 @@ SceneRoots:
   - {fileID: 2120772406}
   - {fileID: 1950342131}
   - {fileID: 1473947425}
-  - {fileID: 6679508848606262615}
   - {fileID: 2713125065024092271}
   - {fileID: 364621289}
   - {fileID: 1557141861}
+  - {fileID: 6679508848606262615}
