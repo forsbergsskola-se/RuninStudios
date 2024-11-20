@@ -10,7 +10,8 @@ public class Note : MonoBehaviour
     public bool isOnTrigger;
     public string ID;
     private float destroyAfter = 20f; //Trigger this when the button har pressed correctly 
-   
+    [SerializeField] private NoteReceiver noteReceiver;
+    
     private void OnEnable()
     {
         Invoke("Deactivate", destroyAfter); // Deactivate note after a set time
@@ -18,11 +19,23 @@ public class Note : MonoBehaviour
     void Update()
     {
         Move();
+        CheckingDistance();
     }
 
     private void Move()
     {
         transform.Translate(direction * speed * Time.deltaTime);
+    }
+
+    private void CheckingDistance()
+    {
+        float noteTempZ = this.transform.position.z;
+        float reciverTempZ = noteReceiver.transform.position.z;
+
+        if (noteTempZ < reciverTempZ + 0.6f && noteTempZ > reciverTempZ - 0.6f)
+        {
+            noteReceiver.TriggerFlip(this, true);
+        }
     }
     
     public void TriggerHit()
@@ -42,7 +55,3 @@ public class Note : MonoBehaviour
         gameObject.SetActive(true);
     }
 }
-
-    
-
-   

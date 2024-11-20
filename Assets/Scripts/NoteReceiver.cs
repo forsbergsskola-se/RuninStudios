@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class NoteReceiver : MonoBehaviour
 {
-    private GameObject redNote;
-    private GameObject blueNote;
-    private GameObject greenNote;
-    private GameObject scratchNote;
+    private static Note redNote;
+    private static Note blueNote;
+    private static Note greenNote;
+    private static Note scratchNote;
 
     [SerializeField] private GameObject redTile;
     [SerializeField] private GameObject blueTile;
@@ -20,48 +20,34 @@ public class NoteReceiver : MonoBehaviour
     [SerializeField] private ParticleSystem greenSuccess;
     [SerializeField] private ParticleSystem scratchSuccess;
     
-    private void OnTriggerEnter(Collider other)
+    
+    public void TriggerFlip(Note note, bool state)
     {
-        if (other.tag == "Note")
-        {
-            TriggerFlip(other, true);
-            Debug.Log($"{other.GetComponent<Note>().ID}: Trigger ON!");
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Note")
-        {
-            TriggerFlip(other, false);
-            Debug.Log($"{other.GetComponent<Note>().ID}: Trigger OFF!");
-        }
-    }
-
-    private void TriggerFlip(Collider other, bool state)
-    {
-        other.GetComponent<Note>().isOnTrigger = state;
+        note.isOnTrigger = state;
         if (state)
         {
-            switch (other.GetComponent<Note>().ID)
+            switch (note.ID)
             {
                 case "RED":
-                    redNote = other.gameObject;
+                    redNote = note;
+                    redNote.isOnTrigger = true;
                     break;
                 case "BLUE":
-                    blueNote = other.gameObject;
+                    blueNote = note;
+                    blueNote.isOnTrigger = true;
                     break;
                 case "GREEN":
-                    greenNote = other.gameObject;
+                    greenNote = note;
+                    greenNote.isOnTrigger = true;
                     break;
                 case "DISC":
-                    scratchNote = other.gameObject;
+                    scratchNote = note;
                     break;
             }
         }
         else
         {
-            switch(other.GetComponent<Note>().ID)
+            switch(note.ID)
             {
                 case "RED":
                     redNote = null;
@@ -92,14 +78,16 @@ public class NoteReceiver : MonoBehaviour
         redTile.transform.position = pressedPosition;
         try
         {
-            if (redNote != null && redNote.GetComponent<Note>().isOnTrigger)
+            if (redNote != null && redNote.isOnTrigger)
             {
+                Debug.Log("Red Success");
+
                 // Reset the particle system by re-enabling its GameObject
                 redSuccess.gameObject.SetActive(false);
                 redSuccess.gameObject.SetActive(true);
 
                 redSuccess.Play();
-                redNote.SetActive(false); // Disable the red note GameObject
+                redNote.gameObject.SetActive(false); // Disable the red note GameObject
                 redNote = null;
             }
         }
@@ -124,13 +112,15 @@ public class NoteReceiver : MonoBehaviour
         blueTile.transform.position = pressedPosition;
         try
         {
-            if (blueNote != null && blueNote.GetComponent<Note>().isOnTrigger)
+            if (blueNote != null && blueNote.isOnTrigger)
             {
+                Debug.Log("Blue Success");
+
                 blueSuccess.gameObject.SetActive(false);
                 blueSuccess.gameObject.SetActive(true);
 
                 blueSuccess.Play();
-                blueNote.SetActive(false); // Disable the blue note GameObject
+                blueNote.gameObject.SetActive(false); // Disable the blue note GameObject
                 blueNote = null;
             }
         }
@@ -155,13 +145,14 @@ public class NoteReceiver : MonoBehaviour
         greenTile.transform.position = pressedPosition;
         try
         {
-            if (greenNote != null && greenNote.GetComponent<Note>().isOnTrigger)
+            if (greenNote != null && greenNote.isOnTrigger)
             {
+                Debug.Log("Green Success");
                 greenSuccess.gameObject.SetActive(false);
                 greenSuccess.gameObject.SetActive(true);
 
                 greenSuccess.Play();
-                greenNote.SetActive(false); // Disable the green note GameObject
+                greenNote.gameObject.SetActive(false); // Disable the green note GameObject
                 greenNote = null;
             }
         }
@@ -183,7 +174,7 @@ public class NoteReceiver : MonoBehaviour
                 scratchNote.gameObject.SetActive(true);
 
                 scratchSuccess.Play();
-                scratchNote.SetActive(false); // Disable the disc note GameObject
+                scratchNote.gameObject.SetActive(false); // Disable the disc note GameObject
                 scratchNote = null;
             }
         }
