@@ -36,6 +36,11 @@ public class Note : MonoBehaviour
         {
             noteReceiver.TriggerFlip(this, true);
         }
+        else if (noteTempZ < reciverTempZ - 0.6f)
+        {
+            noteReceiver.TriggerFlip(this, false);
+            Debug.Log("Note Passed");
+        }
     }
     
     public void TriggerHit()
