@@ -151,7 +151,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 98a9f34438186b040884f4e00204d495, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -265,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 364621287}
   noteGiver: {fileID: 1133863032}
+  missedNotesCount: 0
   maxMissedNotes: 5
   gameOverUI: {fileID: 1557141857}
   csvFile: {fileID: 4900000, guid: b637648936e1d4f92ae9998b9fdc97f4, type: 3}
@@ -726,7 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownText: {fileID: 1877723347}
   metronomeSound: {fileID: 731833169}
-  cvsConverter: {fileID: 0}
+  songManager: {fileID: 364621290}
   countdownTime: 3
 --- !u!1 &798118023
 GameObject:
