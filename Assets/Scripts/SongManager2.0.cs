@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CvsConverter : MonoBehaviour
+public class SongManger2 : MonoBehaviour
 {
     public AudioSource audioSource;
     [SerializeField] private NoteGiver noteGiver;
-    private int missedNotesCount = 0;
+    public int missedNotesCount = 0;
     [SerializeField] private int maxMissedNotes = 5;
     [SerializeField] private GameObject gameOverUI;
 
@@ -35,16 +35,23 @@ public class CvsConverter : MonoBehaviour
     // Function to parse the CSV file
     void LoadCsv(TextAsset file)
     {
-        string[] rows = file.text.Split('\n'); // Split into rows
+        string[] rows = file.text.Split('\n');
+        HashSet<string> uniqueEntries = new HashSet<string>(); // Track unique entries
+
         foreach (string row in rows)
         {
-            string[] columns = row.Split(','); // Split each row into columns
+            if (uniqueEntries.Contains(row)) continue; // Skip duplicates
+
+            uniqueEntries.Add(row); // Add to the set
+            string[] columns = row.Split(',');
+
             if (columns.Length >= 2 && int.TryParse(columns[0], out int timestamp) && int.TryParse(columns[1], out int functionID))
             {
                 dataEntries.Add(new CsvDataEntry { Timestamp = timestamp, FunctionID = functionID });
             }
         }
     }
+
 
     // Schedule function calls based on the parsed data
     void ScheduleFunctions()

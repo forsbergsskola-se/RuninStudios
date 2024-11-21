@@ -21,7 +21,7 @@ public class NoteGiver : MonoBehaviour
         notePool = new List<Note>();
         for (int i = 0; i < poolSize; i++)
         {
-            Note note = Instantiate(notePrefab, notePrefab.transform);
+            Note note = Instantiate(notePrefab);
             note.gameObject.SetActive(false);
             notePool.Add(note);
         }
@@ -60,8 +60,8 @@ public class NoteGiver : MonoBehaviour
                 
             }
             //newNote.ResetNote(slots[randomIndex].transform.position, slots[randomIndex].name.ToUpper());
-        }
     }
+ }
     /*
      
      Quaternion slotRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
