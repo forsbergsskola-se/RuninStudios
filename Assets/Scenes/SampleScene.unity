@@ -131,8 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 364621289}
-  - component: {fileID: 364621288}
   - component: {fileID: 364621287}
+  - component: {fileID: 364621290}
   m_Layer: 0
   m_Name: SongManager
   m_TagString: Untagged
@@ -236,31 +236,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &364621288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364621286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d34bee91d3b044059c4b8f55def0f46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 364621287}
-  bpm: 86
-  notes:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  maxMissedNotes: 3
-  gameOverUI: {fileID: 1557141857}
-  noteGiver: {fileID: 1133863032}
 --- !u!4 &364621289
 Transform:
   m_ObjectHideFlags: 0
@@ -276,6 +251,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &364621290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364621286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf0517fbd7652042828d424f918cdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 364621287}
+  noteGiver: {fileID: 1133863032}
+  maxMissedNotes: 5
+  gameOverUI: {fileID: 1557141857}
+  csvFile: {fileID: 4900000, guid: b637648936e1d4f92ae9998b9fdc97f4, type: 3}
 --- !u!1 &489236527
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +525,7 @@ GameObject:
   - component: {fileID: 731833171}
   - component: {fileID: 731833170}
   - component: {fileID: 731833169}
+  - component: {fileID: 731833174}
   m_Layer: 5
   m_Name: Countdown
   m_TagString: Untagged
@@ -719,6 +712,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &731833174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731833168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d86d21c32b0d45a88eabf8968636577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownText: {fileID: 1877723347}
+  metronomeSound: {fileID: 731833169}
+  cvsConverter: {fileID: 0}
+  countdownTime: 3
 --- !u!1 &798118023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1023,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
