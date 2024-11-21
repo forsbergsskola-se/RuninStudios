@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI; // Use TextMeshPro namespace if using TMP_Text
 using System.Collections;
 using TMPro;
 
@@ -7,7 +6,7 @@ public class CountdownManager : MonoBehaviour
 {
     public TMP_Text countdownText; 
     public AudioSource metronomeSound; 
-    public CvsConverter cvsConverter; 
+    public SongManger2 songManager; 
     public float countdownTime = 3f; 
 
     private float timer;
@@ -19,7 +18,7 @@ public class CountdownManager : MonoBehaviour
         lastDisplayedNumber = Mathf.CeilToInt(countdownTime);
 
         // Disable CvsConverter functionality initially
-        cvsConverter.enabled = false;
+        songManager.enabled = false;
 
         StartCoroutine(StartCountdown());
     }
@@ -54,10 +53,10 @@ public class CountdownManager : MonoBehaviour
     private void StartCvsConverter()
     {
         // Enable CvsConverter script and allow it to start
-        cvsConverter.enabled = true;
+        songManager.enabled = true;
 
         // Optionally, call Start() manually if needed
-        cvsConverter.Invoke("Start", 0f);
+        songManager.Invoke("SongStart", 0f);
     }
 }
 

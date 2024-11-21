@@ -16,7 +16,7 @@ public class SongManger2 : MonoBehaviour
 
     private List<CsvDataEntry> dataEntries = new List<CsvDataEntry>();
 
-    void Start()
+    public void SongStart()
     {
         noteGiver.SettingPool();
         audioSource.Play();
