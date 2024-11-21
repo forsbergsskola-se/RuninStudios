@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class SongManger2 : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class SongManger2 : MonoBehaviour
     public void SongStart()
     {
         noteGiver.SettingPool();
+        ScoreManager.ResetStats();
         audioSource.Play();
         
         if (csvFile != null)

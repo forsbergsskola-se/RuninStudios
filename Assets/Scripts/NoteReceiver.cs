@@ -19,7 +19,8 @@ public class NoteReceiver : MonoBehaviour
     [SerializeField] private ParticleSystem blueSuccess;
     [SerializeField] private ParticleSystem greenSuccess;
     [SerializeField] private ParticleSystem scratchSuccess;
-    
+
+    [SerializeField] private ScoreManager scoreManager;
     
     public void TriggerFlip(Note note, bool state)
     {
@@ -81,7 +82,9 @@ public class NoteReceiver : MonoBehaviour
             if (redNote != null && redNote.isOnTrigger)
             {
                 Debug.Log("Red Success");
-
+                
+                scoreManager.AddScore(10);
+                
                 // Reset the particle system by re-enabling its GameObject
                 redSuccess.gameObject.SetActive(false);
                 redSuccess.gameObject.SetActive(true);
@@ -116,6 +119,8 @@ public class NoteReceiver : MonoBehaviour
             {
                 Debug.Log("Blue Success");
 
+                scoreManager.AddScore(10);
+                
                 blueSuccess.gameObject.SetActive(false);
                 blueSuccess.gameObject.SetActive(true);
 
@@ -126,7 +131,7 @@ public class NoteReceiver : MonoBehaviour
         }
         catch 
         { 
-            Debug.Log("MISSED NOTE!"); 
+            Debug.Log("MISSED NOTE!");
         }
         yield return new WaitForSeconds(0.1f);
         blueTile.transform.position = initialPosition;
@@ -148,6 +153,9 @@ public class NoteReceiver : MonoBehaviour
             if (greenNote != null && greenNote.isOnTrigger)
             {
                 Debug.Log("Green Success");
+                
+                scoreManager.AddScore(10);
+                
                 greenSuccess.gameObject.SetActive(false);
                 greenSuccess.gameObject.SetActive(true);
 
@@ -170,6 +178,8 @@ public class NoteReceiver : MonoBehaviour
         {
             if (scratchNote != null && scratchNote.GetComponent<Note>().isOnTrigger)
             {
+                scoreManager.AddScore(10);
+                
                 scratchNote.gameObject.SetActive(false);
                 scratchNote.gameObject.SetActive(true);
 

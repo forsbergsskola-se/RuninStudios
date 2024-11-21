@@ -12,10 +12,12 @@ public class Note : MonoBehaviour
     private float destroyAfter = 2f; //Trigger this when the button har pressed correctly 
     [SerializeField] private NoteReceiver noteReceiver;
     private SongManger2 songManger2;
+    private ScoreManager scoreManager;
 
     private void Awake()
     {
         songManger2 = FindObjectOfType<SongManger2>();
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     void Update()
@@ -49,6 +51,7 @@ public class Note : MonoBehaviour
             Debug.Log("Note Passed");
             songManger2.NoteMissed(); //Trigger the game over function in the Song Manager
             Debug.Log("NoteMissedFunctionCalled");
+            scoreManager.ResetMultiplier();
             Deactivate();
         }
     }
