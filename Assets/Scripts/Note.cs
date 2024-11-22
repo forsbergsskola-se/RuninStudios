@@ -41,7 +41,7 @@ public class Note : MonoBehaviour
         float notepos = this.transform.position.z;
         float receiverpos = noteReceiver.transform.position.z;
 
-        if ( notepos > receiverpos - 0.8f && notepos < receiverpos + 0.6f)
+        if (notepos > receiverpos - 1f && notepos < receiverpos + 1f)
         {
             noteReceiver.TriggerFlip(this, true);
         }
