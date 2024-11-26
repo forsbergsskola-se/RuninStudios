@@ -45,7 +45,7 @@ public class Note : MonoBehaviour
         {
             noteReceiver.TriggerFlip(this, true);
         }
-        else if (notepos < receiverpos - 1f)
+        else if (notepos < receiverpos - 2f)
         {
             noteReceiver.TriggerFlip(this, false);
             Debug.Log("Note Passed");
