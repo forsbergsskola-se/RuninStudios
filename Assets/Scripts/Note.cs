@@ -9,7 +9,6 @@ public class Note : MonoBehaviour
     public float speed = 5f; // Speed of movement
     public bool isOnTrigger;
     public string ID;
-    private float destroyAfter = 2f; //Trigger this when the button har pressed correctly 
     [SerializeField] private NoteReceiver noteReceiver;
     private SongManger2 songManger2;
     private ScoreManager scoreManager;

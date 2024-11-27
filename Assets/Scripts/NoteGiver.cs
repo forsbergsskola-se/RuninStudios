@@ -12,7 +12,6 @@ public class NoteGiver : MonoBehaviour
     [SerializeField] private GameObject greenSlot;
     
     public float noteSpawnInterval = 1f;
-    private float noteSpawnTimer = 0f;
     private List<Note> notePool;
     private int poolSize = 208;
 

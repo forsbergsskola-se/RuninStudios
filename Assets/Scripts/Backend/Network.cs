@@ -11,17 +11,22 @@ namespace Backend
 
         public delegate void AuthenticationRequestCompleted();
         public delegate void AuthenticationRequestFailed();
-        
 
         private void Awake()
         {
-            bc = FindObjectOfType<BrainCloudWrapper>();
-            DontDestroyOnLoad(this);
-            bc.Init();
-        }
+            // Singleton Pattern
+            if (sharedInstance != null && sharedInstance != this)
+            {
+                Destroy(this.gameObject); // Destroy duplicate instance
+                return;
+            }
+            sharedInstance = this;
+            
+            DontDestroyOnLoad(this.gameObject); // Make this GameObject persistent
 
-        private void Start()
-        {
+            bc = FindObjectOfType<BrainCloudWrapper>();
+
+            bc.Init();
             RequestAnonymousAuthentication();
         }
 
@@ -39,18 +44,18 @@ namespace Backend
             BrainCloud.SuccessCallback successCallback = (responseData, cbobject) =>
             {
                 Debug.Log($"RequestAnonymousAuthentication success: {responseData}");
-                if (authenticationRequestCompleted != null) { authenticationRequestCompleted(); }
+                authenticationRequestCompleted?.Invoke();
             };
-        
+
             // Failure callback lambda
-            BrainCloud.FailureCallback failureCallback = (statusMessage, code, erreor, cbobject) =>
+            BrainCloud.FailureCallback failureCallback = (statusMessage, code, error, cbobject) =>
             {
                 Debug.Log($"RequestAnonymousAuthentication failed: {statusMessage}");
-                if (authenticationRequestFailed != null) { authenticationRequestFailed(); }
+                authenticationRequestFailed?.Invoke();
             };
-        
+
             // BrainCloud request
             bc.AuthenticateAnonymous(successCallback, failureCallback);
         }
     }
-}   
+}
