@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Backend
@@ -35,6 +36,11 @@ namespace Backend
             bc.RunCallbacks();
         }
 
+        private void OnApplicationQuit()
+        {
+            throw new NotImplementedException();
+        }
+
         #region Authntication Methods
         public bool IsAuthenticated() { return bc.Client.Authenticated; } // To validate authentication
 
@@ -59,8 +65,14 @@ namespace Backend
             bc.AuthenticateAnonymous(successCallback, failureCallback);
         }
         #endregion
-        
-        
+
+        private static void LoadFromServer()
+        {
+            bc.GlobalStatisticsService.ReadAllGlobalStats((response, cbobject) =>
+            {
+                
+            }); 
+        }
         
     }
 }
