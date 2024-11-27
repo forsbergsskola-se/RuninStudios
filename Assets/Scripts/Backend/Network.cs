@@ -35,6 +35,7 @@ namespace Backend
             bc.RunCallbacks();
         }
 
+        #region Authntication Methods
         public bool IsAuthenticated() { return bc.Client.Authenticated; } // To validate authentication
 
         public void RequestAnonymousAuthentication(AuthenticationRequestCompleted authenticationRequestCompleted = null,
@@ -57,5 +58,9 @@ namespace Backend
             // BrainCloud request
             bc.AuthenticateAnonymous(successCallback, failureCallback);
         }
+        #endregion
+        
+        
+        
     }
 }
