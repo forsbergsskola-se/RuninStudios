@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using BrainCloud;
 
 namespace Backend
 {
@@ -29,6 +30,7 @@ namespace Backend
 
             bc.Init();
             RequestAnonymousAuthentication();
+            LoadFromServer();
         }
 
         void Update()
@@ -68,11 +70,27 @@ namespace Backend
 
         private static void LoadFromServer()
         {
+            //Load Global Stats
             bc.GlobalStatisticsService.ReadAllGlobalStats((response, cbobject) =>
             {
-                
+                var convertedData = JsonUtility.FromJson<Data>(response);
+                Debug.Log(convertedData);
             }); 
         }
-        
+    }
+
+    [Serializable]
+    class Data
+    {
+        public Statistics statistics;
+        public int status;
+    }
+    
+    [Serializable]
+    class Statistics
+    {
+        public float GlobalHighscoreSongOne;
+        public float GlobalHighscoreSongThree;
+        public float GlobalHighscoreSongTwo;
     }
 }
