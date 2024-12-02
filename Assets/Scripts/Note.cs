@@ -22,7 +22,7 @@ public class Note : MonoBehaviour
     void Update()
     {
         Move();
-        CheckingDistance();
+        CheckingDistance(this.transform.position.z, noteReceiver.transform.position.z);
     }
 
     private void Move()
@@ -30,21 +30,15 @@ public class Note : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    private void CheckingDistance()
+    private void CheckingDistance(float notepos, float receiverpos)
     {
-        if (!this.gameObject.activeSelf)
-        {
-            return;
-        }
-        
-        float notepos = this.transform.position.z;
-        float receiverpos = noteReceiver.transform.position.z;
+        if (!this.gameObject.activeSelf) { return; }
 
         if (notepos > receiverpos - 1f && notepos < receiverpos + 1f)
         {
             noteReceiver.TriggerFlip(this, true);
         }
-        else if (notepos < receiverpos - 2f)
+        if (notepos < receiverpos - 4f)
         {
             noteReceiver.TriggerFlip(this, false);
             Debug.Log("Note Passed");
