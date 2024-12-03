@@ -8,8 +8,8 @@ namespace Backend
     public class Network : MonoBehaviour
     {
         private static BrainCloudWrapper bc;
-
         public static Network sharedInstance;
+        private static Data data;
 
         public delegate void AuthenticationRequestCompleted();
         public delegate void AuthenticationRequestFailed();
@@ -68,15 +68,35 @@ namespace Backend
         }
         #endregion
 
+        
+        //On successful response, load data from server
+        //Call on awake
         private static void LoadFromServer()
         {
             //Load Global Stats
             bc.GlobalStatisticsService.ReadAllGlobalStats((response, cbobject) =>
             {
-                var convertedData = JsonUtility.FromJson<Data>(response);
-                Debug.Log(convertedData);
+                data = JsonUtility.FromJson<Data>(response);
+                Debug.Log($"Json Converted! {data}");
             }); 
         }
+        
+        //Saving data, send to BrainCloud server
+        public static void SaveData()
+        {
+            
+        }
+
+        #region Helper Methods
+
+        private void UpdateGlobalStat(string globalStatName, float globalStatValue)
+        { 
+            //TODO: Input Save GlobalStats here
+            
+        }
+        
+
+        #endregion
     }
 
     [Serializable]
