@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Local Data Handling
 public class PlayerData : MonoBehaviour
 {
-    private static float personalScoreOne;
-    private static float personalScoreTwo;
-    private static float personalScoreThree;
+    public static float personalScoreOne;
+    public static float personalScoreTwo;
+    public static float personalScoreThree;
 
-    private static float globalScoreOne;
-    private static float globalScoreTwo; 
-    private static float globalScoreThree;
+    public static float globalScoreOne;
+    public static float globalScoreTwo; 
+    public static float globalScoreThree;
     
     private static string UserName;
 
