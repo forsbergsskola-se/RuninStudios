@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class SongManger2 : MonoBehaviour
 
     
     [Tooltip("CSV file to parse (drag and drop into Inspector)")]
-    public TextAsset csvFile; // Assign the CSV file in the Inspector
+    public TextAsset csvFile;
 
     private List<CsvDataEntry> dataEntries = new List<CsvDataEntry>();
 

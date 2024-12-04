@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8586993126702134077}
   noteGiver: {fileID: 0}
+  missedNotesCount: 0
   maxMissedNotes: 5
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 1288787985438592039, guid: 5645f5a09ae6f0f4e9140d32fcfaf3e2, type: 3}
   csvFile: {fileID: 4900000, guid: b637648936e1d4f92ae9998b9fdc97f4, type: 3}
