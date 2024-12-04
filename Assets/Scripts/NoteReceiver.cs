@@ -9,7 +9,7 @@ public class NoteReceiver : MonoBehaviour
     private static Note redNote;
     private static Note blueNote;
     private static Note greenNote;
-    private static Note scratchNote;
+    private static Note discNote;
 
     [SerializeField] private GameObject redTile;
     [SerializeField] private GameObject blueTile;
@@ -42,7 +42,7 @@ public class NoteReceiver : MonoBehaviour
                     greenNote.isOnTrigger = true;
                     break;
                 case "DISC":
-                    scratchNote = note;
+                    discNote = note;
                     break;
             }
         }
@@ -60,7 +60,7 @@ public class NoteReceiver : MonoBehaviour
                     greenNote = null;
                     break;
                 case "DISC":
-                    scratchNote = null;
+                    discNote = null;
                     break;
             }
         }
@@ -176,16 +176,16 @@ public class NoteReceiver : MonoBehaviour
     {
         try
         {
-            if (scratchNote != null && scratchNote.GetComponent<Note>().isOnTrigger)
+            if (discNote != null && discNote.GetComponent<Note>().isOnTrigger)
             {
                 scoreManager.AddScore(10);
                 
-                scratchNote.gameObject.SetActive(false);
-                scratchNote.gameObject.SetActive(true);
+                discNote.gameObject.SetActive(false);
+                discNote.gameObject.SetActive(true);
 
                 scratchSuccess.Play();
-                scratchNote.gameObject.SetActive(false); // Disable the disc note GameObject
-                scratchNote = null;
+                discNote.gameObject.SetActive(false); // Disable the disc note GameObject
+                discNote = null;
             }
         }
         catch 

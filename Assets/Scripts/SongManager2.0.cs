@@ -72,13 +72,12 @@ public class SongManger2 : MonoBehaviour
         }
     }
 
-    // Example functions to call
+    // Function calls for different color ID
     void Function_0() { noteGiver.SpawnNote(0); }
-
     void Function_1() { noteGiver.SpawnNote(1); }
-
     void Function_2() { noteGiver.SpawnNote(2); }
-    
+    void Function_3() { noteGiver.SpawnNote(3); }
+
     public void NoteMissed()
     {
         missedNotesCount++;
