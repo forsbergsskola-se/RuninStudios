@@ -7,7 +7,7 @@ namespace Backend
 {
     public class Network : MonoBehaviour
     {
-        private static BrainCloudWrapper bc;
+        public static BrainCloudWrapper bc { get; private set; }
         public static Network sharedInstance;
         private static GlobalData globalData;
         private static UserData userData;
@@ -72,19 +72,38 @@ namespace Backend
         
         //On successful response, load data from server
         //Call on awake
-        private static void LoadFromServer()
+        private void LoadFromServer()
         {
             //Load Global Stats
+            ReadGlobalFromServer();
+            
+            //Load User Stats
+            ReadUserFromServer();
+            
+        }
+
+        private void ReadGlobalFromServer()
+        {
             bc.GlobalStatisticsService.ReadAllGlobalStats((response, cbobject) =>
             {
                 globalData.data = JsonUtility.FromJson<GlobalData.Data>(response);
                 Debug.Log($"Json Converted! {globalData}");
             });
+        }
 
-            bc.PlayerStatisticsService.ReadAllUserStats (responce, cbObject) =>
+        private void ReadUserFromServer()
+        {
+            SuccessCallback successCallback = (response, cbObject) =>
             {
-                
+                Debug.Log(string.Format("Success | {0}", response));
+                userData.data = JsonUtility.FromJson<UserData.Data>(response);
             };
+            FailureCallback failureCallback = (status, code, error, cbObject) =>
+            {
+                Debug.Log(string.Format("Failed | {0}  {1}  {2}", status, code, error));
+            };
+
+            bc.PlayerStatisticsService.ReadAllUserStats(successCallback, failureCallback);
         }
         
         //Saving data, send to BrainCloud server
@@ -118,6 +137,8 @@ namespace Backend
     [Serializable]
     class UserData
     {
+        public Data data;
+        private int status;
         [Serializable]
         public class Data
         {
