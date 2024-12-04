@@ -15,22 +15,25 @@ public class MainMenu : MonoBehaviour
     
     public AudioClip SongThree;
     public TextAsset csvFileThree;
-
     
     public void PlaySongOne()
     {
+        SongHolder.songToPlay = SongOne;
+        SongHolder.csvToRead = csvFileOne;
         SceneManager.LoadSceneAsync(1);
     }
 
     public void PlaySongTwo()
     {
-        
+        SongHolder.songToPlay = SongTwo;
+        SongHolder.csvToRead = csvFileTwo;
         SceneManager.LoadSceneAsync(1);
     }
 
     public void PlaySongThree()
     {
-        
+        SongHolder.songToPlay = SongThree;
+        SongHolder.csvToRead = csvFileThree;
         SceneManager.LoadSceneAsync(1);
     }
 

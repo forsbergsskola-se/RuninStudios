@@ -18,6 +18,12 @@ public class SongManger2 : MonoBehaviour
 
     private List<CsvDataEntry> dataEntries = new List<CsvDataEntry>();
 
+    private void Start()
+    {
+        audioSource.clip = SongHolder.songToPlay;
+        csvFile = SongHolder.csvToRead;
+    }
+
     public void SongStart()
     {
         noteGiver.SettingPool();

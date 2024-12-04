@@ -352,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &364621287
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1106,7 +1106,6 @@ MonoBehaviour:
   csvFileTwo: {fileID: 0}
   SongThree: {fileID: 0}
   csvFileThree: {fileID: 0}
-  songManager: {fileID: 0}
 --- !u!328 &963194232
 VideoPlayer:
   m_ObjectHideFlags: 0

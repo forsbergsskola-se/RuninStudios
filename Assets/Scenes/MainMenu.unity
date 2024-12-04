@@ -2849,17 +2849,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c29388d83bb0454cb2f92ad21abc218, type: 3}
---- !u!114 &908139802 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8748938360579323105, guid: 2c29388d83bb0454cb2f92ad21abc218, type: 3}
-  m_PrefabInstance: {fileID: 908139801}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaf0517fbd7652042828d424f918cdf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &919952141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4427,7 +4416,37 @@ MonoBehaviour:
   csvFileTwo: {fileID: 4900000, guid: 40ded1592109c9a4ea5fa2a1fb8f6754, type: 3}
   SongThree: {fileID: 8300000, guid: 304ed32ec46f948999064d3296e52f45, type: 3}
   csvFileThree: {fileID: 4900000, guid: 0265615bfe7bf4beca8bd47fcee09888, type: 3}
-  songManager: {fileID: 908139802}
+--- !u!1 &1947751528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1947751529}
+  m_Layer: 0
+  m_Name: SongHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1947751529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947751528}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05000019, y: -4.5, z: 35.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1949270133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4854,3 +4873,4 @@ SceneRoots:
   - {fileID: 1092681487}
   - {fileID: 1516424539}
   - {fileID: 908139801}
+  - {fileID: 1947751529}
