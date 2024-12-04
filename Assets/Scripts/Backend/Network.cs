@@ -5,19 +5,12 @@ using BrainCloud;
 
 namespace Backend
 {
-    //Global Data Handling
     public class Network : MonoBehaviour
     {
         private static BrainCloudWrapper bc;
         public static Network sharedInstance;
-        private static Data data;
-
-        private string leaderboardIDOne = "SongOne";
-        private string leaderboardIDTwo = "SongTwo";
-        private string leaderboardIDThree = "SongThree";
-        private BrainCloudSocialLeaderboard.SortOrder sortOrder = BrainCloudSocialLeaderboard.SortOrder.HIGH_TO_LOW;
-        private int startIndex = 0;
-        private int endIndex = 9;
+        private static GlobalData globalData;
+        private static UserData userData;
 
         public delegate void AuthenticationRequestCompleted();
         public delegate void AuthenticationRequestFailed();
@@ -75,66 +68,72 @@ namespace Backend
             bc.AuthenticateAnonymous(successCallback, failureCallback);
         }
         #endregion
+
         
         //On successful response, load data from server
-        ////Call on awake
-        private void LoadFromServer()
+        //Call on awake
+        private static void LoadFromServer()
         {
             //Load Global Stats
-            GetUserStats();
-            LoadLeaderboards();
-        }
-
-        #region Helper Methods
-        
-        // Load Leaderboard data
-        private void LoadLeaderboards()
-        {
-            SuccessCallback successCallback = (response, cbObject) =>
+            bc.GlobalStatisticsService.ReadAllGlobalStats((response, cbobject) =>
             {
-                Debug.Log(string.Format("Success | {0}", response));
-            };
-            FailureCallback failureCallback = (status, code, error, cbObject) =>
-            {
-                Debug.Log(string.Format("Failed | {0}  {1}  {2}", status, code, error));
-            };
+                globalData.data = JsonUtility.FromJson<GlobalData.Data>(response);
+                Debug.Log($"Json Converted! {globalData}");
+            });
 
-            bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardIDOne, sortOrder, startIndex, endIndex, successCallback, failureCallback);
-            bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardIDTwo, sortOrder, startIndex, endIndex, successCallback, failureCallback);
-            bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardIDThree, sortOrder, startIndex, endIndex, successCallback, failureCallback);
+            bc.PlayerStatisticsService.ReadAllUserStats (responce, cbObject) =>
+            {
+                
+            };
         }
         
-        // Read and convert User Statistics
-        private void GetUserStats()
-        {
-            bc.PlayerStatisticsService.ReadAllUserStats((response, cbobject) =>
-            {
-                data = JsonUtility.FromJson<Data>(response);
-                Debug.Log($"Json Converted! {data}");
-            }); 
-        }
-
         //Saving data, send to BrainCloud server
         public static void SaveData()
         {
             
         }
+    }
 
-        #endregion
+
+    [Serializable]
+    class GlobalData
+    {
+        public Data data;
+        [Serializable]
+        public class Data
+        {
+            public Statistics statistics;
+            public int status;
+        }
+    
+        [Serializable]
+        public class Statistics
+        {
+            public float GlobalHighscoreSongThree;
+            public float GlobalHighscoreSongOne;
+            public float GlobalHighscoreSongTwo;
+        }
     }
 
     [Serializable]
-    class Data
+    class UserData
     {
-        public Statistics statistics;
-        public int status;
+        [Serializable]
+        public class Data
+        {
+            public Statistics statistics;
+            public int status;
+        }
+
+        [Serializable]
+        public class Statistics
+        {
+            public float ScoreSongOne;
+            public float ScoreSongThree;
+            public float ScoreSongTwo;
+
+        }
     }
     
-    [Serializable]
-    class Statistics
-    {
-        public float ScoreSongOne;
-        public float ScoreSongThree;
-        public float ScoreSongTwo;
-    }
+    
 }
