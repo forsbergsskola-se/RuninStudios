@@ -89,8 +89,6 @@ namespace Backend
             // Read all leaderboards from server
             ReadAllLeaderboardFromServer();
             
-            //Test posting
-            //UploadToLeaderboard(leaderboardIDOne, 10, "{\"nickname\":\"batman\"}");
         }
 
         //Get Global Data Statistics "Top Global HighScores"

@@ -12,9 +12,7 @@ public class SongManger2 : MonoBehaviour
     [SerializeField] private int maxMissedNotes = 5;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject gameWinningUI;
-
     
-    [Tooltip("CSV file to parse (drag and drop into Inspector)")]
     public TextAsset csvFile;
 
     private List<CsvDataEntry> dataEntries = new List<CsvDataEntry>();
@@ -61,8 +59,7 @@ public class SongManger2 : MonoBehaviour
             }
         }
     }
-
-
+    
     // Schedule function calls based on the parsed data
     void ScheduleFunctions()
     {
