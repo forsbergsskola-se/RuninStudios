@@ -11,9 +11,9 @@ namespace Backend
         public static Network sharedInstance;
         private static GlobalData globalData;
         private static UserData userData;
-        private static LeaderboardData leaderboardIDOneData;
-        private static LeaderboardData leaderboardIDTwoData;
-        private static LeaderboardData leaderboardIDThreeData;
+        private static LeaderboardData leaderboardOneData;
+        private static LeaderboardData leaderboardTwoData;
+        private static LeaderboardData leaderboardThreeData;
 
         private string leaderboardIDOne = "SongOne";
         private string leaderboardIDTwo = "SongTwo";
@@ -90,14 +90,12 @@ namespace Backend
             //Load User Stats
             ReadUserFromServer();
             
-            //Save Read data to local static script
-            //LoadToLocal();
             
             // Read all leaderboards from server
             ReadAllLeaderboardFromServer();
             
             //Test posting
-            UploadToLeaderboard(leaderboardIDOne, 10, "{\"nickname\":\"batman\"}");
+            //UploadToLeaderboard(leaderboardIDOne, 10, "{\"nickname\":\"batman\"}");
         }
 
         //Get Global Data Statistics "Top Global HighScores"
@@ -135,9 +133,9 @@ namespace Backend
         //Get Leaderboard Data
         private void ReadAllLeaderboardFromServer()
         {
-            ReadLeaderboardID(leaderboardIDOne, leaderboardIDOneData);    
-            ReadLeaderboardID(leaderboardIDTwo, leaderboardIDTwoData);            
-            ReadLeaderboardID(leaderboardIDThree, leaderboardIDThreeData);
+            ReadLeaderboardID(leaderboardIDOne, leaderboardOneData);    
+            ReadLeaderboardID(leaderboardIDTwo, leaderboardTwoData);            
+            ReadLeaderboardID(leaderboardIDThree, leaderboardThreeData);
         }
         
         //Helper function
@@ -155,7 +153,7 @@ namespace Backend
             bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardID, sortOrder, startIndex, endIndex, successCallback, failureCallback);
         }
 
-        private void UploadToLeaderboard(string leaderboardID, int score, string moi)
+        public static void UploadToLeaderboard(string leaderboardID, int score, string name) //name = "{\"nickname\":\"batman\"}"
         {
             SuccessCallback successCallback = (response, cbObject) =>
             {
@@ -165,24 +163,15 @@ namespace Backend
             {
                 Debug.Log(string.Format("Failed | {0}  {1}  {2}", status, code, error));
             };
-
-            bc.LeaderboardService.PostScoreToLeaderboard(leaderboardID, score, moi, successCallback, failureCallback);
+            bc.LeaderboardService.PostScoreToLeaderboard(leaderboardID, score, name, successCallback, failureCallback);
         }
         
-        //Saving data, send to BrainCloud server
-        public static void SaveData()
-        {
-            
-        }
+        
         private static void LoadToLocal()
         {
             PlayerData.personalScoreOne = userData.data.statistics.ScoreSongOne;
             PlayerData.personalScoreTwo = userData.data.statistics.ScoreSongTwo;
             PlayerData.personalScoreThree = userData.data.statistics.ScoreSongThree;
-
-            PlayerData.globalScoreOne = globalData.data.statistics.GlobalHighscoreSongOne;
-            PlayerData.globalScoreTwo = globalData.data.statistics.GlobalHighscoreSongTwo;
-            PlayerData.globalScoreThree = globalData.data.statistics.GlobalHighscoreSongThree;
         }
     }
 

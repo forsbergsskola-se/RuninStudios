@@ -1,48 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Network = Backend.Network;
 
 // Local Data Handling
 public class PlayerData : MonoBehaviour
 {
+    public static string nickname;
+    
     public static float personalScoreOne;
     public static float personalScoreTwo;
     public static float personalScoreThree;
 
-    public static float globalScoreOne;
-    public static float globalScoreTwo; 
-    public static float globalScoreThree;
+    public static float topHighscoreOne;
+    public static float topHighscoreTwo; 
+    public static float topHighscoreThree;
     
     private static string UserName;
-
+    
     // Compare current personal score with new
     // Compare new score with global score, then set new global Highscore if true
     // Call after finish a song
-    public static void SetPersonalScore(int songTrack, float score)
+    public static void PostToLeaderboard(int songTrack, float score)
     {
         switch (songTrack)
         {
+            case 0:
+                Network.UploadToLeaderboard("SongOne", Convert.ToInt32(score), UserName);
+                break;
             case 1:
-                if (personalScoreOne > score) return;
-                personalScoreOne = score;
-                if (ValidateScores(globalScoreOne, personalScoreOne)) { globalScoreOne = personalScoreOne; }
+                Network.UploadToLeaderboard("SongTwo", Convert.ToInt32(score), UserName);
                 break;
             case 2:
-                if (personalScoreTwo > score) return;
-                personalScoreTwo = score;
-                if (ValidateScores(globalScoreTwo, personalScoreTwo)) { globalScoreTwo = personalScoreTwo; }
-                break;
-            case 3:
-                if (personalScoreThree > score) return;
-                personalScoreThree = score;
-                if (ValidateScores(globalScoreThree, personalScoreThree)) { globalScoreThree = personalScoreThree; }
+                Network.UploadToLeaderboard("SongThree", Convert.ToInt32(score), UserName);
                 break;
         }
     }
 
-    //Compare the global score with personal score
-    private static bool ValidateScores(float globalScore, float personalScore)
-    {
-        return personalScore > globalScore;
-    }
 }
