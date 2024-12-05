@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     {
         SongHolder.songToPlay = SongOne;
         SongHolder.csvToRead = csvFileOne;
+        SongHolder.songTrack = 0;
         SceneManager.LoadSceneAsync(1);
     }
 
@@ -27,6 +28,7 @@ public class MainMenu : MonoBehaviour
     {
         SongHolder.songToPlay = SongTwo;
         SongHolder.csvToRead = csvFileTwo;
+        SongHolder.songTrack = 1;
         SceneManager.LoadSceneAsync(1);
     }
 
@@ -34,6 +36,7 @@ public class MainMenu : MonoBehaviour
     {
         SongHolder.songToPlay = SongThree;
         SongHolder.csvToRead = csvFileThree;
+        SongHolder.songTrack = 2;
         SceneManager.LoadSceneAsync(1);
     }
 

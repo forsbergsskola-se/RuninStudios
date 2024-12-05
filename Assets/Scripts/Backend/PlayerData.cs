@@ -7,7 +7,15 @@ using Network = Backend.Network;
 // Local Data Handling
 public class PlayerData : MonoBehaviour
 {
-    private static string UserName;
+    public static float personalScoreOne;
+    public static float personalScoreTwo;
+    public static float personalScoreThree;
+
+    public static float topHighscoreOne;
+    public static float topHighscoreTwo; 
+    public static float topHighscoreThree;
+    
+    public static string userName = "{\"nickname\":\"RandomUser\"}";
     
     // Compare current personal score with new
     // Compare new score with global score, then set new global Highscore if true
@@ -17,13 +25,13 @@ public class PlayerData : MonoBehaviour
         switch (songTrack)
         {
             case 0:
-                Network.UploadToLeaderboard("SongOne", Convert.ToInt32(score), UserName);
+                Network.UploadToLeaderboard("SongOne", Convert.ToInt32(score), userName);
                 break;
             case 1:
-                Network.UploadToLeaderboard("SongTwo", Convert.ToInt32(score), UserName);
+                Network.UploadToLeaderboard("SongTwo", Convert.ToInt32(score), userName);
                 break;
             case 2:
-                Network.UploadToLeaderboard("SongThree", Convert.ToInt32(score), UserName);
+                Network.UploadToLeaderboard("SongThree", Convert.ToInt32(score), userName);
                 break;
         }
     }

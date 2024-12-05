@@ -9,6 +9,7 @@ public class SongHolder : MonoBehaviour
     
     public static AudioClip songToPlay;
     public static TextAsset csvToRead;
+    public static int songTrack;
     
     private void Awake()
     {

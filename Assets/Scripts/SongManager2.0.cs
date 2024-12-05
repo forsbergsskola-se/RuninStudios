@@ -70,6 +70,7 @@ public class SongManger2 : MonoBehaviour
             // Schedule function calls using Invoke
             Invoke($"Function_{entry.FunctionID}", entry.Timestamp / 1000f);
         }
+        SendScore();
     }
 
     // Function calls for different color ID
@@ -87,6 +88,11 @@ public class SongManger2 : MonoBehaviour
             TriggerGameOver();
         }
     }
+
+    private void TriggerGameFinish()
+    {
+        Debug.Log("Song Finished?");
+    }
     private void TriggerGameOver()
     {
         Debug.Log("TriggerGameOver() called!");
@@ -94,7 +100,15 @@ public class SongManger2 : MonoBehaviour
         StopAllCoroutines();
         gameOverUI.SetActive(true);
         Debug.Log("Game over");
+        SendScore();
     }
+    
+    //Call post-song
+    private void SendScore()
+    {
+        PlayerData.PostToLeaderboard(SongHolder.songTrack, ScoreManager.score);
+    }
+    
 
     // Simple class to store CSV data
     private class CsvDataEntry
