@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Network = Backend.Network;
 
 // Local Data Handling
@@ -16,7 +17,8 @@ public class PlayerData : MonoBehaviour
     public static float topHighscoreThree;
     
     public static string userName = "{\"nickname\":\"RandomUser\"}";
-    
+
+    public InputField nameInput;
     // Compare current personal score with new
     // Compare new score with global score, then set new global Highscore if true
     // Call after finish a song
@@ -34,6 +36,11 @@ public class PlayerData : MonoBehaviour
                 Network.UploadToLeaderboard("SongThree", Convert.ToInt32(score), userName);
                 break;
         }
+    }
+
+    public void SetNickName()
+    {
+        userName = $"{{\"nickname\":\"{nameInput.text}\"}}";
     }
 
 }
