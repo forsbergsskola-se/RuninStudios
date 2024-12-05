@@ -943,6 +943,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Controller (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4268981186069610731, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473947424}
+    - target: {fileID: 4268981186069610731, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: buttonPressRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865422716252243263, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473947424}
+    - target: {fileID: 5865422716252243263, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: buttonPressGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473947424}
+    - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Scratch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ControllerMapping, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9012610516145941421, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1022,6 +1066,14 @@ PrefabInstance:
     - target: {fileID: 9012610516145941421, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142608161734817651, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473947424}
+    - target: {fileID: 9142608161734817651, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: buttonPressBlue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

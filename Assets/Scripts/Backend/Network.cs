@@ -49,11 +49,6 @@ namespace Backend
             bc.RunCallbacks();
         }
 
-        private void OnApplicationQuit()
-        {
-            throw new NotImplementedException();
-        }
-
         #region Authntication Methods
         public bool IsAuthenticated() { return bc.Client.Authenticated; } // To validate authentication
 

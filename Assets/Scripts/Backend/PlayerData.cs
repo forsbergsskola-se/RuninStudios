@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Network = Backend.Network;
@@ -18,7 +19,7 @@ public class PlayerData : MonoBehaviour
     
     public static string userName = "{\"nickname\":\"RandomUser\"}";
 
-    public InputField nameInput;
+    public TMP_Text nameInput;
     // Compare current personal score with new
     // Compare new score with global score, then set new global Highscore if true
     // Call after finish a song
