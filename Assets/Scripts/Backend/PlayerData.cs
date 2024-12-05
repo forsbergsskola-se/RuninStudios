@@ -7,16 +7,6 @@ using Network = Backend.Network;
 // Local Data Handling
 public class PlayerData : MonoBehaviour
 {
-    public static string nickname;
-    
-    public static float personalScoreOne;
-    public static float personalScoreTwo;
-    public static float personalScoreThree;
-
-    public static float topHighscoreOne;
-    public static float topHighscoreTwo; 
-    public static float topHighscoreThree;
-    
     private static string UserName;
     
     // Compare current personal score with new

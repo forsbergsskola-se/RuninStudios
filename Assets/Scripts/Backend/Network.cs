@@ -166,13 +166,6 @@ namespace Backend
             bc.LeaderboardService.PostScoreToLeaderboard(leaderboardID, score, name, successCallback, failureCallback);
         }
         
-        
-        private static void LoadToLocal()
-        {
-            PlayerData.personalScoreOne = userData.data.statistics.ScoreSongOne;
-            PlayerData.personalScoreTwo = userData.data.statistics.ScoreSongTwo;
-            PlayerData.personalScoreThree = userData.data.statistics.ScoreSongThree;
-        }
     }
 
     [Serializable]
