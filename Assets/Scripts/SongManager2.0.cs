@@ -11,6 +11,7 @@ public class SongManger2 : MonoBehaviour
     public int missedNotesCount = 0;
     [SerializeField] private int maxMissedNotes = 5;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject gameWinningUI;
 
     
     [Tooltip("CSV file to parse (drag and drop into Inspector)")]
@@ -70,7 +71,8 @@ public class SongManger2 : MonoBehaviour
             // Schedule function calls using Invoke
             Invoke($"Function_{entry.FunctionID}", entry.Timestamp / 1000f);
         }
-        SendScore();
+
+        Invoke("TriggerGameFinish", 6f);
     }
 
     // Function calls for different color ID
@@ -92,6 +94,9 @@ public class SongManger2 : MonoBehaviour
     private void TriggerGameFinish()
     {
         Debug.Log("Song Finished?");
+        StopAllCoroutines();
+        gameWinningUI.SetActive(true);
+        SendScore();
     }
     private void TriggerGameOver()
     {
@@ -104,10 +109,7 @@ public class SongManger2 : MonoBehaviour
     }
     
     //Call post-song
-    private void SendScore()
-    {
-        PlayerData.PostToLeaderboard(SongHolder.songTrack, ScoreManager.score);
-    }
+    private void SendScore() { PlayerData.PostToLeaderboard(SongHolder.songTrack, ScoreManager.score); }
     
 
     // Simple class to store CSV data

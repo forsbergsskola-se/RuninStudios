@@ -279,6 +279,7 @@ MonoBehaviour:
   missedNotesCount: 0
   maxMissedNotes: 5
   gameOverUI: {fileID: 1557141857}
+  gameWinningUI: {fileID: 826090454}
   csvFile: {fileID: 4900000, guid: b637648936e1d4f92ae9998b9fdc97f4, type: 3}
 --- !u!198 &490590033 stripped
 ParticleSystem:
@@ -718,6 +719,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
+--- !u!1 &826090454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7271169065141700715, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
+  m_PrefabInstance: {fileID: 826090453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &902512954
 GameObject:
   m_ObjectHideFlags: 0
