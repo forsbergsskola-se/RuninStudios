@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1071,14 +1071,14 @@ PrefabInstance:
     - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1473947424}
+      objectReference: {fileID: 1126024124}
     - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Scratch
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5987873618885890606, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1088,6 +1088,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7406969422280700384, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+      propertyPath: controllerMapping
+      value: 
+      objectReference: {fileID: 1473947424}
     - target: {fileID: 9012610516145941421, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1181,6 +1185,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+--- !u!1 &1126024124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4452796238087701880, guid: 4dcf55c330e1f0743b42f6d782d5262a, type: 3}
+  m_PrefabInstance: {fileID: 1119623931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1133863032 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2805135427805792929, guid: 4eca0f2b4dd5e49d9bdc2098b4677b46, type: 3}

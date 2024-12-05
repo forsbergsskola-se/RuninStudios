@@ -42,6 +42,7 @@ public class PlayerData : MonoBehaviour
     public void SetNickName()
     {
         userName = $"{{\"nickname\":\"{nameInput.text}\"}}";
+        Debug.Log("Changed Nickname!");
     }
 
 }
