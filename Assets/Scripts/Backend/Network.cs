@@ -145,6 +145,20 @@ namespace Backend
             {
                 Debug.Log(string.Format("Success | {0}", response));
                 leaderboardIDData = JsonUtility.FromJson<LeaderboardData>(response);
+                switch (leaderboardID)
+                {
+                    case "SongOne":
+                        PlayerData.topHighscoreOne = leaderboardIDData.data.leaderboard[0].score;
+                        break;
+                    case "SongTwo":
+                        PlayerData.topHighscoreTwo = leaderboardIDData.data.leaderboard[0].score;
+                        break;
+                    case "SongThree":
+                        PlayerData.topHighscoreThree = leaderboardIDData.data.leaderboard[0].score;
+                        break;
+                }
+                Debug.Log($"Top Score: {leaderboardIDData.data.leaderboard[0].score}");
+
             };
             FailureCallback failureCallback = (status, code, error, cbObject) =>
             {
@@ -153,6 +167,8 @@ namespace Backend
             bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardID, sortOrder, startIndex, endIndex, successCallback, failureCallback);
         }
 
+        //Get Users Own top Highscore in a leaderboard
+        //Then assigning those values to local script, PlayerData.cs
         private void GetUserScoreInLeaderboard(string leaderboardID)
         {
             SuccessCallback successCallback = (response, cbObject) =>
@@ -179,7 +195,6 @@ namespace Backend
             {
                 Debug.Log(string.Format("Failed | {0}  {1}  {2}", status, code, error));
             };
-
             bc.LeaderboardService.GetPlayerScore(leaderboardID, versionID, successCallback, failureCallback);
         }
         
@@ -235,6 +250,7 @@ namespace Backend
 
     #endregion
 
+    #region LeaderboardUser Class
     [Serializable]
     public class LeaderboardUser
     {
@@ -264,8 +280,8 @@ namespace Backend
             public string nickname; // Additional metadata (e.g., nickname)
         }
     }
+    #endregion
 
-    
     [Serializable]
     class GlobalData
     {
