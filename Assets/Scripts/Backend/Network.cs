@@ -11,6 +11,7 @@ namespace Backend
         public static Network sharedInstance;
         private static GlobalData globalData;
         private static UserData userData;
+        private static LeaderboardUser leaderboardUser;
         private static LeaderboardData leaderboardOneData;
         private static LeaderboardData leaderboardTwoData;
         private static LeaderboardData leaderboardThreeData;
@@ -21,6 +22,7 @@ namespace Backend
         BrainCloudSocialLeaderboard.SortOrder sortOrder = BrainCloudSocialLeaderboard.SortOrder.HIGH_TO_LOW;
         int startIndex = 0;
         int endIndex = 9;
+        private int versionID = 1;
 
         public delegate void AuthenticationRequestCompleted();
         public delegate void AuthenticationRequestFailed();
@@ -85,13 +87,18 @@ namespace Backend
             //Load User Stats
             ReadUserFromServer();
             
-            
             // Read all leaderboards from server
             ReadAllLeaderboardFromServer();
             
+            GetUserScoreInLeaderboard(leaderboardIDOne);
+
+            GetUserScoreInLeaderboard(leaderboardIDTwo);
+
+            GetUserScoreInLeaderboard(leaderboardIDThree);
+
         }
 
-        //Get Global Data Statistics "Top Global HighScores"
+        //Get Global Data Statistics
         private void ReadGlobalFromServer()
         {
             //-----Error Handling-----
@@ -107,7 +114,7 @@ namespace Backend
             bc.GlobalStatisticsService.ReadAllGlobalStats(successCallback, failureCallback);
         }
 
-        //Get User Data Statistics "Top Personal HighScores"
+        //Get User Data Statistics
         private void ReadUserFromServer()
         {
             //-----Error Handling-----
@@ -146,6 +153,36 @@ namespace Backend
             bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardID, sortOrder, startIndex, endIndex, successCallback, failureCallback);
         }
 
+        private void GetUserScoreInLeaderboard(string leaderboardID)
+        {
+            SuccessCallback successCallback = (response, cbObject) =>
+            {
+                Debug.Log(string.Format("Success | {0}", response));
+                leaderboardUser = JsonUtility.FromJson<LeaderboardUser>(response);
+
+                switch (leaderboardID)
+                {
+                    case "SongOne":
+                        PlayerData.personalScoreOne = leaderboardUser.data.score.score;
+                        break;
+                    case "SongTwo":
+                        PlayerData.personalScoreTwo = leaderboardUser.data.score.score;
+                        break;
+                    case "SongThree":
+                        PlayerData.personalScoreThree = leaderboardUser.data.score.score;
+                        break;
+                }
+                
+                Debug.Log($"Your Score: {leaderboardUser.data.score.score}");
+            };
+            FailureCallback failureCallback = (status, code, error, cbObject) =>
+            {
+                Debug.Log(string.Format("Failed | {0}  {1}  {2}", status, code, error));
+            };
+
+            bc.LeaderboardService.GetPlayerScore(leaderboardID, versionID, successCallback, failureCallback);
+        }
+        
         public static void UploadToLeaderboard(string leaderboardID, int score, string name) //name = "{\"nickname\":\"batman\"}"
         {
             SuccessCallback successCallback = (response, cbObject) =>
@@ -158,9 +195,11 @@ namespace Backend
             };
             bc.LeaderboardService.PostScoreToLeaderboard(leaderboardID, score, name, successCallback, failureCallback);
         }
+
         
     }
 
+    #region Leaderboard Class
     [Serializable]
     class LeaderboardData
     {
@@ -194,12 +233,44 @@ namespace Backend
         }
     }
 
+    #endregion
 
+    [Serializable]
+    public class LeaderboardUser
+    {
+        public Data data; // Contains the main data object
+        public int status; // Represents the HTTP status code
+
+        [Serializable]
+        public class Data
+        {
+            public Score score; // Contains score-related information
+        }
+
+        [Serializable]
+        public class Score
+        {
+            public float score; // The player's score
+            public Metadata data; // Additional data (like nickname)
+            public long createdAt; // Timestamp when the score was created
+            public long updatedAt; // Timestamp when the score was last updated
+            public string leaderboardId; // The ID of the leaderboard
+            public int versionId; // The version ID of the leaderboard
+        }
+
+        [Serializable]
+        public class Metadata
+        {
+            public string nickname; // Additional metadata (e.g., nickname)
+        }
+    }
+
+    
     [Serializable]
     class GlobalData
     {
         public Data data;
-        private int statuse;
+        private int status;
         
         [Serializable]
         public class Data
@@ -211,9 +282,9 @@ namespace Backend
         [Serializable]
         public class Statistics
         {
-            public float GlobalHighscoreSongThree;
-            public float GlobalHighscoreSongOne;
-            public float GlobalHighscoreSongTwo;
+            public float SongTwoSuccesses;
+            public float SongThreeSuccesses;
+            public float SongOneSuccesses;
         }
     }
 
@@ -222,6 +293,7 @@ namespace Backend
     {
         public Data data;
         private int status;
+        
         [Serializable]
         public class Data
         {

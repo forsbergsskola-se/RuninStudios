@@ -20,8 +20,7 @@ public class PlayerData : MonoBehaviour
     public static string userName = "{\"nickname\":\"RandomUser\"}";
 
     public TMP_Text nameInput;
-    // Compare current personal score with new
-    // Compare new score with global score, then set new global Highscore if true
+    
     // Call after finish a song
     public static void PostToLeaderboard(int songTrack, float score)
     {

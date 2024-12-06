@@ -69,7 +69,7 @@ public class SongManger2 : MonoBehaviour
             Invoke($"Function_{entry.FunctionID}", entry.Timestamp / 1000f);
         }
 
-        Invoke("TriggerGameFinish", 6f);
+        if (!audioSource.isPlaying) Invoke("TriggerGameFinish", 6f);
     }
 
     // Function calls for different color ID
