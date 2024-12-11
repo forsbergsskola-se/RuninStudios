@@ -43,6 +43,7 @@ public class CountdownManager : MonoBehaviour
 
         // Display "GO!" for a brief moment
         countdownText.text = "GO!";
+        songManager.StartNoteSpawns();
         yield return new WaitForSeconds(1f);
 
         // Start the game

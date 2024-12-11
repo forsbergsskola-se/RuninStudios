@@ -28,7 +28,10 @@ public class SongManger2 : MonoBehaviour
         noteGiver.SettingPool();
         ScoreManager.ResetStats();
         audioSource.Play();
-        
+    }
+
+    public void StartNoteSpawns()
+    {
         if (csvFile != null)
         {
             LoadCsv(csvFile);
@@ -63,15 +66,23 @@ public class SongManger2 : MonoBehaviour
     // Schedule function calls based on the parsed data
     void ScheduleFunctions()
     {
+        int index = 0;
         foreach (var entry in dataEntries)
         {
             // Schedule function calls using Invoke
             Invoke($"Function_{entry.FunctionID}", entry.Timestamp / 1000f);
+        
+            // Check if it's the last entry
+            if (index == dataEntries.Count - 1)
+            {
+                Debug.Log("This is the last data entry.");
+                if (!audioSource.isPlaying) Invoke("TriggerGameFinish", 6f);
+            }
+        
+            index++;
         }
 
-        if (!audioSource.isPlaying) Invoke("TriggerGameFinish", 6f);
     }
-
     // Function calls for different color ID
     void Function_0() { noteGiver.SpawnNote(0); }
     void Function_1() { noteGiver.SpawnNote(1); }

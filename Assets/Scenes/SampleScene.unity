@@ -1668,6 +1668,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Note Receiver
       objectReference: {fileID: 0}
+    - target: {fileID: 3342186902047983426, guid: 0bf54085d55809043973a602b11c3871, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f18477cca48454e099cdaebd896baa71, type: 2}
+    - target: {fileID: 6711496047393790098, guid: 0bf54085d55809043973a602b11c3871, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f18477cca48454e099cdaebd896baa71, type: 2}
     - target: {fileID: 7068095437451785223, guid: 0bf54085d55809043973a602b11c3871, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -1684,6 +1692,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7068296777009474522, guid: 0bf54085d55809043973a602b11c3871, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f18477cca48454e099cdaebd896baa71, type: 2}
+    - target: {fileID: 7550627958345827917, guid: 0bf54085d55809043973a602b11c3871, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f18477cca48454e099cdaebd896baa71, type: 2}
     - target: {fileID: 7672276411090531551, guid: 0bf54085d55809043973a602b11c3871, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.41
@@ -1756,9 +1772,9 @@ SceneRoots:
   - {fileID: 2713125065024092271}
   - {fileID: 364621289}
   - {fileID: 3426809070173195723}
+  - {fileID: 826090453}
   - {fileID: 6679508848606262615}
   - {fileID: 731833173}
   - {fileID: 902512956}
   - {fileID: 1014728223}
   - {fileID: 1119623931}
-  - {fileID: 826090453}
