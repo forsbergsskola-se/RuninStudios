@@ -9,7 +9,7 @@ public class Note : MonoBehaviour
     public float speed = 5f; // Speed of movement
     public bool isOnTrigger;
     public string ID;
-    [SerializeField] private NoteReceiver noteReceiver;
+    private NoteReceiver noteReceiver;
     private SongManger2 songManger2;
     private ScoreManager scoreManager;
 
@@ -17,6 +17,7 @@ public class Note : MonoBehaviour
     {
         songManger2 = FindObjectOfType<SongManger2>();
         scoreManager = FindObjectOfType<ScoreManager>();
+        noteReceiver = FindObjectOfType<NoteReceiver>();
     }
 
     void Update()
@@ -34,7 +35,7 @@ public class Note : MonoBehaviour
     {
         if (!this.gameObject.activeSelf) { return; }
 
-        if (notepos > receiverpos - 1f && notepos < receiverpos + 1f)
+        if (notepos > receiverpos - 2f && notepos < receiverpos + 2f)
         {
             noteReceiver.TriggerFlip(this, true);
         }
