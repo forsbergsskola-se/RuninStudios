@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     public AudioClip SongThree;
     public TextAsset csvFileThree;
     
+    [SerializeField] Animator transitionanimator;
     public void PlaySongOne()
     {
         SongHolder.songToPlay = SongOne;
