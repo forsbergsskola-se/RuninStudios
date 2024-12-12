@@ -42,7 +42,7 @@ public class CountdownManager : MonoBehaviour
         }
 
         // Display "GO!" for a brief moment
-        countdownText.text = "GO!";
+        countdownText.text = "";
         songManager.StartNoteSpawns();
         StartCvsConverter();
 
