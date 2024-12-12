@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28e71cb97edf95b4cb6eb5d9337c6c4a, type: 2}
+  - {fileID: 2100000, guid: f18477cca48454e099cdaebd896baa71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,4 +100,4 @@ MonoBehaviour:
   speed: 25
   isOnTrigger: 0
   ID: 
-  noteReceiver: {fileID: -5664551632880922930, guid: 0bf54085d55809043973a602b11c3871, type: 3}
+  scoreValue: 0
