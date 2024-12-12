@@ -28,6 +28,7 @@ public class SongManger2 : MonoBehaviour
         noteGiver.SettingPool();
         ScoreManager.ResetStats();
         audioSource.Play();
+        Invoke("TriggerGameFinish", audioSource.clip.length + 5);
     }
 
     public void StartNoteSpawns()
