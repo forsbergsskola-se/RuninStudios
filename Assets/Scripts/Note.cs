@@ -9,6 +9,7 @@ public class Note : MonoBehaviour
     public float speed = 5f; // Speed of movement
     public bool isOnTrigger;
     public string ID;
+    public float scoreValue;
     private NoteReceiver noteReceiver;
     private SongManger2 songManger2;
     private ScoreManager scoreManager;
@@ -37,6 +38,8 @@ public class Note : MonoBehaviour
 
         if (notepos > receiverpos - 2f && notepos < receiverpos + 2f)
         {
+            SetScoreValue(notepos, receiverpos);
+            
             noteReceiver.TriggerFlip(this, true);
         }
         if (notepos < receiverpos - 4f)
@@ -44,10 +47,22 @@ public class Note : MonoBehaviour
             noteReceiver.TriggerFlip(this, false);
             Debug.Log("Note Passed");
             songManger2.NoteMissed(); //Trigger the game over function in the Song Manager
+            scoreValue = 0;
             Debug.Log("NoteMissedFunctionCalled");
             scoreManager.ResetMultiplier();
             Deactivate();
         }
+    }
+
+    private void SetScoreValue(float notePos, float receiverPos)
+    {
+        float distance = receiverPos - notePos;
+        if (distance  < 0) { distance  *= -1; } //Normalize value
+
+        if (distance <= 2 && distance > 1.5) { scoreValue = 10; }
+        else if (distance < 1.5 && distance > 1) { scoreValue = 7.5f;}
+        else if (distance < 1) { scoreValue = 5;}
+        
     }
     
     public void TriggerHit()

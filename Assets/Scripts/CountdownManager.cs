@@ -44,11 +44,12 @@ public class CountdownManager : MonoBehaviour
         // Display "GO!" for a brief moment
         countdownText.text = "GO!";
         songManager.StartNoteSpawns();
+        StartCvsConverter();
+
         yield return new WaitForSeconds(1f);
 
         // Start the game
         countdownText.gameObject.SetActive(false);
-        StartCvsConverter();
     }
 
     private void StartCvsConverter()

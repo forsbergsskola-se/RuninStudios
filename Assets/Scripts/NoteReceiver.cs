@@ -83,7 +83,7 @@ public class NoteReceiver : MonoBehaviour
             {
                 Debug.Log("Red Success");
                 
-                scoreManager.AddScore(10);
+                scoreManager.AddScore(redNote.scoreValue);
                 
                 // Reset the particle system by re-enabling its GameObject
                 redSuccess.gameObject.SetActive(false);
@@ -119,7 +119,7 @@ public class NoteReceiver : MonoBehaviour
             {
                 Debug.Log("Blue Success");
 
-                scoreManager.AddScore(10);
+                scoreManager.AddScore(blueNote.scoreValue);
                 
                 blueSuccess.gameObject.SetActive(false);
                 blueSuccess.gameObject.SetActive(true);
@@ -154,7 +154,7 @@ public class NoteReceiver : MonoBehaviour
             {
                 Debug.Log("Green Success");
                 
-                scoreManager.AddScore(10);
+                scoreManager.AddScore(greenNote.scoreValue);
                 
                 greenSuccess.gameObject.SetActive(false);
                 greenSuccess.gameObject.SetActive(true);
@@ -178,7 +178,7 @@ public class NoteReceiver : MonoBehaviour
         {
             if (discNote != null && discNote.GetComponent<Note>().isOnTrigger)
             {
-                scoreManager.AddScore(10);
+                scoreManager.AddScore(discNote.scoreValue);
                 
                 discNote.gameObject.SetActive(false);
                 discNote.gameObject.SetActive(true);
