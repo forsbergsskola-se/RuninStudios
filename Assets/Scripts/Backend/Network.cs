@@ -167,8 +167,8 @@ namespace Backend
             bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardID, sortOrder, startIndex, endIndex, successCallback, failureCallback);
         }
 
-        //Get Users Own top Highscore in a leaderboard
-        //Then assigning those values to local script, PlayerData.cs
+        // Get Top HighScores in a leaderboard
+        // Then assigning those values to local script, PlayerData.cs
         private void GetUserScoreInLeaderboard(string leaderboardID)
         {
             SuccessCallback successCallback = (response, cbObject) =>
@@ -198,7 +198,8 @@ namespace Backend
             bc.LeaderboardService.GetPlayerScore(leaderboardID, versionID, successCallback, failureCallback);
         }
         
-        public static void UploadToLeaderboard(string leaderboardID, int score, string name) //name = "{\"nickname\":\"batman\"}"
+        //Update Leaderboard
+        public static void UploadToLeaderboard(string leaderboardID, int score, string name)
         {
             SuccessCallback successCallback = (response, cbObject) =>
             {
@@ -210,8 +211,6 @@ namespace Backend
             };
             bc.LeaderboardService.PostScoreToLeaderboard(leaderboardID, score, name, successCallback, failureCallback);
         }
-
-        
     }
 
     #region Leaderboard Class
@@ -298,9 +297,13 @@ namespace Backend
         [Serializable]
         public class Statistics
         {
-            public float SongTwoSuccesses;
-            public float SongThreeSuccesses;
+            public float SongOneFailures;
             public float SongOneSuccesses;
+            public float SongThreeFailures;
+            public float SongThreeSuccesses;
+            public float SongTwoFailures;
+            public float SongTwoSuccesses;
+            
         }
     }
 
