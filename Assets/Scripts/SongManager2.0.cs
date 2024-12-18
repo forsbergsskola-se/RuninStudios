@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using Network = Backend.Network;
 
 public class SongManger2 : MonoBehaviour
 {
@@ -82,7 +83,6 @@ public class SongManger2 : MonoBehaviour
     public void NoteMissed()
     {
         missedNotesCount++;
-        Debug.Log("Missed Notes Count called");
         if (missedNotesCount >= maxMissedNotes)
         {
             TriggerGameOver();
@@ -94,19 +94,58 @@ public class SongManger2 : MonoBehaviour
         Debug.Log("Song Finished?");
         StopAllCoroutines();
         gameWinningUI.SetActive(true);
+        UpdateGlobalStatInSuccess(SongHolder.songTrack);
         SendScore();
     }
     private void TriggerGameOver()
     {
-        Debug.Log("TriggerGameOver() called!");
+        PauseGame();
         audioSource.Stop();
         StopAllCoroutines();
         gameOverUI.SetActive(true);
-        Debug.Log("Game over");
+        UpdateGlobalStatInFailure(SongHolder.songTrack);
         SendScore();
     }
+
+    private static void PauseGame() { Time.timeScale = 0f; }   //Actually just sets timescale to 0
+    public static void UnpauseGame() { Time.timeScale = 1f; }
     
-    //Call post-song
+    
+    // Update Global Data for total wins and losses
+    #region Global Update
+    private void UpdateGlobalStatInSuccess(int songTrack)
+    {
+        switch (songTrack)
+        {
+            case 0:
+                Network.IncrementGlobalStat("SongOneSuccesses");
+                break;
+            case 1:
+                Network.IncrementGlobalStat("SongTwoSuccesses");
+                break;
+            case 2:
+                Network.IncrementGlobalStat("SongThreeSuccesses");
+                break;
+        }
+    }
+    private void UpdateGlobalStatInFailure(int songTrack)
+    {
+        switch (songTrack)
+        {
+            case 0:
+                Network.IncrementGlobalStat("SongOneFailures");
+                break;
+            case 1:
+                Network.IncrementGlobalStat("SongTwoFailures");
+                break;
+            case 2:
+                Network.IncrementGlobalStat("SongThreeFailures");
+                break;
+        }
+    }
+    #endregion
+    
+    //Call post-song, both in success and failure to complete the song
     private void SendScore() { PlayerData.PostToLeaderboard(SongHolder.songTrack, ScoreManager.score); }
     
 

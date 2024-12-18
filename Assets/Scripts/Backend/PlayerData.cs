@@ -9,6 +9,8 @@ using Network = Backend.Network;
 // Local Data Handling
 public class PlayerData : MonoBehaviour
 {
+    public static PlayerData sharedInstance;
+    
     public static float personalScoreOne;
     public static float personalScoreTwo;
     public static float personalScoreThree;
@@ -20,6 +22,20 @@ public class PlayerData : MonoBehaviour
     public static string userName = "{\"nickname\":\"RandomUser\"}";
 
     public TMP_Text nameInput;
+
+
+    private void Awake()
+    {
+        // Singleton Pattern
+        if (sharedInstance != null && sharedInstance != this)
+        {
+            Destroy(this.gameObject); // Destroy duplicate instance
+            return;
+        }
+        sharedInstance = this;
+            
+        DontDestroyOnLoad(this.gameObject);
+    }
     
     // Call after finish a song
     public static void PostToLeaderboard(int songTrack, float score)

@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Animator transitionanimator;
     public void PlaySongOne()
     {
+        SongManger2.UnpauseGame();
         SongHolder.songToPlay = SongOne;
         SongHolder.csvToRead = csvFileOne;
         SongHolder.songTrack = 0;
@@ -27,6 +28,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlaySongTwo()
     {
+        SongManger2.UnpauseGame();
         SongHolder.songToPlay = SongTwo;
         SongHolder.csvToRead = csvFileTwo;
         SongHolder.songTrack = 1;
@@ -35,6 +37,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlaySongThree()
     {
+        SongManger2.UnpauseGame();
         SongHolder.songToPlay = SongThree;
         SongHolder.csvToRead = csvFileThree;
         SongHolder.songTrack = 2;

@@ -211,6 +211,22 @@ namespace Backend
             };
             bc.LeaderboardService.PostScoreToLeaderboard(leaderboardID, score, name, successCallback, failureCallback);
         }
+        
+        //Update Global Statistics
+        public static void IncrementGlobalStat(string globalName)
+        {
+            string statistics = $"{{\"{globalName}\":1}}";
+            SuccessCallback successCallback = (response, cbObject) =>
+            {
+                Debug.Log(string.Format("Success | {0}", response));
+            };
+            FailureCallback failureCallback = (status, code, error, cbObject) =>
+            {
+                Debug.Log(string.Format("Failed | {0}  {1}  {2}", status, code, error));
+            };
+
+            bc.GlobalStatisticsService.IncrementGlobalStats(statistics, successCallback, failureCallback);
+        }
     }
 
     #region Leaderboard Class
@@ -303,7 +319,6 @@ namespace Backend
             public float SongThreeSuccesses;
             public float SongTwoFailures;
             public float SongTwoSuccesses;
-            
         }
     }
 

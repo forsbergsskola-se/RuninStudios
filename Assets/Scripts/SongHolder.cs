@@ -9,7 +9,7 @@ public class SongHolder : MonoBehaviour
     
     public static AudioClip songToPlay;
     public static TextAsset csvToRead;
-    public static int songTrack;
+    public static int songTrack; // Network purpose: to track which song is being played
     
     private void Awake()
     {
