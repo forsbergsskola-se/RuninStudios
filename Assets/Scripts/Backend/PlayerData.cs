@@ -15,9 +15,17 @@ public class PlayerData : MonoBehaviour
     public static float personalScoreTwo;
     public static float personalScoreThree;
 
+    public TMP_Text UIPlayerScoreOne;
+    public TMP_Text UIPlayerScoreTwo;
+    public TMP_Text UIPlayerScoreThree;
+    
     public static float topHighscoreOne;
     public static float topHighscoreTwo; 
     public static float topHighscoreThree;
+    
+    public TMP_Text UITopScoreOne;
+    public TMP_Text UITopScoreTwo;
+    public TMP_Text UITopScoreThree;
     
     public static string userName = "{\"nickname\":\"RandomUser\"}";
 
@@ -33,7 +41,6 @@ public class PlayerData : MonoBehaviour
             return;
         }
         sharedInstance = this;
-            
         DontDestroyOnLoad(this.gameObject);
     }
     
@@ -60,4 +67,14 @@ public class PlayerData : MonoBehaviour
         Debug.Log("Changed Nickname!");
     }
 
+    public void UpdateScores()
+    {
+        UIPlayerScoreOne.text = $"Your Score: {personalScoreOne.ToString()}";
+        UIPlayerScoreTwo.text = $"Your Score: {personalScoreTwo.ToString()}";
+        UIPlayerScoreThree.text = $"Your Score: {personalScoreThree.ToString()}";
+        
+        UITopScoreOne.text = $"Top Score: {topHighscoreOne.ToString()}";
+        UITopScoreTwo.text = $"Top Score: {topHighscoreTwo.ToString()}";
+        UITopScoreThree.text = $"Top Score: {topHighscoreThree.ToString()}";
+    }
 }

@@ -138,7 +138,7 @@ namespace Backend
             ReadLeaderboardID(leaderboardIDThree, leaderboardThreeData);
         }
         
-        //Helper function
+        // Get HighScores in a leaderboard
         private void ReadLeaderboardID(string leaderboardID, LeaderboardData leaderboardIDData)
         {
             SuccessCallback successCallback = (response, cbObject) =>
@@ -167,7 +167,6 @@ namespace Backend
             bc.LeaderboardService.GetGlobalLeaderboardPage(leaderboardID, sortOrder, startIndex, endIndex, successCallback, failureCallback);
         }
 
-        // Get Top HighScores in a leaderboard
         // Then assigning those values to local script, PlayerData.cs
         private void GetUserScoreInLeaderboard(string leaderboardID)
         {
@@ -297,6 +296,7 @@ namespace Backend
     }
     #endregion
 
+    #region GlobalData Class
     [Serializable]
     class GlobalData
     {
@@ -321,7 +321,9 @@ namespace Backend
             public float SongTwoSuccesses;
         }
     }
+    #endregion
 
+    #region UserData Class
     [Serializable]
     class UserData
     {
@@ -344,6 +346,7 @@ namespace Backend
 
         }
     }
-    
+    #endregion
+
     
 }
