@@ -720,6 +720,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5838379724593294958, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 963194231}
+    - target: {fileID: 5838379724593294958, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7271169065141700715, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
       propertyPath: m_Name
       value: WinGameUI
@@ -807,6 +815,14 @@ PrefabInstance:
     - target: {fileID: 7628284020497131075, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844672838714727249, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 963194231}
+    - target: {fileID: 7844672838714727249, guid: 786a814327f8645d5831fe9d1bca948a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -977,6 +993,7 @@ MonoBehaviour:
   csvFileTwo: {fileID: 0}
   SongThree: {fileID: 0}
   csvFileThree: {fileID: 0}
+  countdownManager: {fileID: 731833174}
   transitionanimator: {fileID: 0}
 --- !u!328 &963194232
 VideoPlayer:
@@ -1664,10 +1681,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 963194231}
+    - target: {fileID: 2174874715407289755, guid: 5645f5a09ae6f0f4e9140d32fcfaf3e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2260815126037118454, guid: 5645f5a09ae6f0f4e9140d32fcfaf3e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 963194231}
+    - target: {fileID: 2260815126037118454, guid: 5645f5a09ae6f0f4e9140d32fcfaf3e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartScene
+      objectReference: {fileID: 0}
     - target: {fileID: 8272112772083877370, guid: 5645f5a09ae6f0f4e9140d32fcfaf3e2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
