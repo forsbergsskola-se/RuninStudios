@@ -498,8 +498,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1947751530}
-        m_TargetAssemblyTypeName: PlayerData, Assembly-CSharp
+      - m_Target: {fileID: 1178213639}
+        m_TargetAssemblyTypeName: ScoreHolder, Assembly-CSharp
         m_MethodName: UpdateScores
         m_Mode: 1
         m_Arguments:
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 69651245}
   - component: {fileID: 69651244}
   m_Layer: 5
-  m_Name: Top Score
+  m_Name: UITopScoreTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2795,7 +2795,7 @@ GameObject:
   - component: {fileID: 631453981}
   - component: {fileID: 631453980}
   m_Layer: 5
-  m_Name: Player Score
+  m_Name: UIPlayerScoreThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3261,7 +3261,7 @@ GameObject:
   - component: {fileID: 821269483}
   - component: {fileID: 821269482}
   m_Layer: 5
-  m_Name: Player Score
+  m_Name: UIPlayerScoreTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3766,7 +3766,7 @@ GameObject:
   - component: {fileID: 900264523}
   - component: {fileID: 900264522}
   m_Layer: 5
-  m_Name: Top Score
+  m_Name: UITopScoreThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4967,7 +4967,7 @@ GameObject:
   - component: {fileID: 1119554831}
   - component: {fileID: 1119554830}
   m_Layer: 5
-  m_Name: Top Score
+  m_Name: UITopScoreOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5582,6 +5582,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151925408}
   m_CullTransparentMesh: 1
+--- !u!1 &1178213638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178213640}
+  - component: {fileID: 1178213639}
+  m_Layer: 0
+  m_Name: GlobalScoreHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1178213639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178213638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df484bb81afaf24abe73f603a8fef9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPlayerScoreOne: {fileID: 2094944991}
+  UIPlayerScoreTwo: {fileID: 821269482}
+  UIPlayerScoreThree: {fileID: 631453980}
+  UITopScoreOne: {fileID: 1119554830}
+  UITopScoreTwo: {fileID: 69651244}
+  UITopScoreThree: {fileID: 900264522}
+--- !u!4 &1178213640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178213638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1169, y: 595.52747, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1198319801
 GameObject:
   m_ObjectHideFlags: 0
@@ -6477,6 +6527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Network
       objectReference: {fileID: 0}
+    - target: {fileID: 7118937534410689445, guid: 0bf89190b55cfb84d8225ba5a8806c38, type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 1947751530}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7854,12 +7908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bc987f50d5beb43b4ac85433c3f3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIPlayerScoreOne: {fileID: 2094944991}
-  UIPlayerScoreTwo: {fileID: 821269482}
-  UIPlayerScoreThree: {fileID: 631453980}
-  UITopScoreOne: {fileID: 1119554830}
-  UITopScoreTwo: {fileID: 69651244}
-  UITopScoreThree: {fileID: 900264522}
   nameInput: {fileID: 1890739439}
 --- !u!1 &1949270133
 GameObject:
@@ -8228,7 +8276,7 @@ GameObject:
   - component: {fileID: 2094944992}
   - component: {fileID: 2094944991}
   m_Layer: 5
-  m_Name: Player Score
+  m_Name: UIPlayerScoreOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8363,3 +8411,4 @@ SceneRoots:
   - {fileID: 908139801}
   - {fileID: 1947751529}
   - {fileID: 403853557}
+  - {fileID: 1178213640}

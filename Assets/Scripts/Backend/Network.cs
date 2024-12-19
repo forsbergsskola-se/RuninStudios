@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using BrainCloud;
 
@@ -16,13 +14,14 @@ namespace Backend
         private static LeaderboardData leaderboardTwoData;
         private static LeaderboardData leaderboardThreeData;
 
-        private string leaderboardIDOne = "SongOne";
-        private string leaderboardIDTwo = "SongTwo";
-        private string leaderboardIDThree = "SongThree";
-        BrainCloudSocialLeaderboard.SortOrder sortOrder = BrainCloudSocialLeaderboard.SortOrder.HIGH_TO_LOW;
-        int startIndex = 0;
-        int endIndex = 9;
-        private int versionID = 1;
+
+        private readonly string leaderboardIDOne = "SongOne";
+        private readonly string leaderboardIDTwo = "SongTwo";
+        private readonly string leaderboardIDThree = "SongThree";
+        readonly BrainCloudSocialLeaderboard.SortOrder sortOrder = BrainCloudSocialLeaderboard.SortOrder.HIGH_TO_LOW;
+        readonly int startIndex = 0;
+        readonly int endIndex = 9;
+        private readonly int versionID = 1;
 
         public delegate void AuthenticationRequestCompleted();
         public delegate void AuthenticationRequestFailed();
@@ -77,24 +76,21 @@ namespace Backend
         #endregion
 
         
-        //On successful response, load data from server
-        //Call on awake
+        // On successful response, load data from server
+        // Call on awake
         private void LoadFromServer()
         {
-            //Load Global Stats
+            // Load Global Stats
             ReadGlobalFromServer();
             
-            //Load User Stats
+            // Load User Stats
             ReadUserFromServer();
             
             // Read all leaderboards from server
             ReadAllLeaderboardFromServer();
-            
-            GetUserScoreInLeaderboard(leaderboardIDOne);
 
-            GetUserScoreInLeaderboard(leaderboardIDTwo);
-
-            GetUserScoreInLeaderboard(leaderboardIDThree);
+            // Read all user scores in each leaderboard
+            ReadAllUserStats();
 
         }
 
@@ -131,11 +127,19 @@ namespace Backend
         }
 
         //Get Leaderboard Data
-        private void ReadAllLeaderboardFromServer()
+        public void ReadAllLeaderboardFromServer()
         {
             ReadLeaderboardID(leaderboardIDOne, leaderboardOneData);    
             ReadLeaderboardID(leaderboardIDTwo, leaderboardTwoData);            
             ReadLeaderboardID(leaderboardIDThree, leaderboardThreeData);
+        }
+        
+        // Get Leaderboard Data
+        public void ReadAllUserStats()
+        {
+            GetUserScoreInLeaderboard(leaderboardIDOne);
+            GetUserScoreInLeaderboard(leaderboardIDTwo);
+            GetUserScoreInLeaderboard(leaderboardIDThree);
         }
         
         // Get HighScores in a leaderboard
@@ -168,7 +172,7 @@ namespace Backend
         }
 
         // Then assigning those values to local script, PlayerData.cs
-        private void GetUserScoreInLeaderboard(string leaderboardID)
+        public void GetUserScoreInLeaderboard(string leaderboardID)
         {
             SuccessCallback successCallback = (response, cbObject) =>
             {
@@ -227,126 +231,4 @@ namespace Backend
             bc.GlobalStatisticsService.IncrementGlobalStats(statistics, successCallback, failureCallback);
         }
     }
-
-    #region Leaderboard Class
-    [Serializable]
-    class LeaderboardData
-    {
-        public Data data;
-        private int status;
-        
-        [Serializable]
-        public class Data
-        {
-            public List<LeaderboardEntry> leaderboard;
-            public bool moreBefore;
-            public bool moreAfter;
-            public long timeBeforeReset;
-            public long server_time;
-        }
-
-        [Serializable]
-        public class LeaderboardEntry
-        {
-            public string playerId;
-            public int score;
-            public string data;
-            public long createdAt;
-            public long updatedAt;
-            public int index;
-            public int rank;
-            public string name;
-            public string summaryFriendData;
-            public string pictureUrl;
-            public bool rewarded;
-        }
-    }
-
-    #endregion
-
-    #region LeaderboardUser Class
-    [Serializable]
-    public class LeaderboardUser
-    {
-        public Data data; // Contains the main data object
-        public int status; // Represents the HTTP status code
-
-        [Serializable]
-        public class Data
-        {
-            public Score score; // Contains score-related information
-        }
-
-        [Serializable]
-        public class Score
-        {
-            public float score; // The player's score
-            public Metadata data; // Additional data (like nickname)
-            public long createdAt; // Timestamp when the score was created
-            public long updatedAt; // Timestamp when the score was last updated
-            public string leaderboardId; // The ID of the leaderboard
-            public int versionId; // The version ID of the leaderboard
-        }
-
-        [Serializable]
-        public class Metadata
-        {
-            public string nickname; // Additional metadata (e.g., nickname)
-        }
-    }
-    #endregion
-
-    #region GlobalData Class
-    [Serializable]
-    class GlobalData
-    {
-        public Data data;
-        private int status;
-        
-        [Serializable]
-        public class Data
-        {
-            public Statistics statistics;
-            public int status;
-        }
-    
-        [Serializable]
-        public class Statistics
-        {
-            public float SongOneFailures;
-            public float SongOneSuccesses;
-            public float SongThreeFailures;
-            public float SongThreeSuccesses;
-            public float SongTwoFailures;
-            public float SongTwoSuccesses;
-        }
-    }
-    #endregion
-
-    #region UserData Class
-    [Serializable]
-    class UserData
-    {
-        public Data data;
-        private int status;
-        
-        [Serializable]
-        public class Data
-        {
-            public Statistics statistics;
-            public int status;
-        }
-
-        [Serializable]
-        public class Statistics
-        {
-            public float ScoreSongOne;
-            public float ScoreSongThree;
-            public float ScoreSongTwo;
-
-        }
-    }
-    #endregion
-
-    
 }
