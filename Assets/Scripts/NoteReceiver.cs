@@ -15,13 +15,61 @@ public class NoteReceiver : MonoBehaviour
     [SerializeField] private GameObject blueTile;
     [SerializeField] private GameObject greenTile;
     
+    [SerializeField] private ScoreManager scoreManager;
+    
+    //---Particle effects----
     [SerializeField] private ParticleSystem redSuccess;
     [SerializeField] private ParticleSystem blueSuccess;
     [SerializeField] private ParticleSystem greenSuccess;
     [SerializeField] private ParticleSystem scratchSuccess;
 
-    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private Material baseMaterialRed;
+    private Color originalColorRed;
     
+    [SerializeField] private Material baseMaterialBlue;
+    private Color originalColorBlue;
+    
+    [SerializeField] private Material baseMaterialGreen;
+    private Color originalColorGreen;
+    
+    [SerializeField] private Material baseMaterialYellow;
+    private Color originalColorYellow;
+    
+    private bool isTransitioning;
+    private float duration = 0.1f;
+    private void Start()
+    {
+        originalColorRed = baseMaterialRed.color; // Store the original color
+        originalColorBlue = baseMaterialBlue.color;
+        originalColorGreen = baseMaterialGreen.color;
+        originalColorYellow = baseMaterialYellow.color;
+    }
+    
+    IEnumerator ChangeColorOnce(Color targetColor, Color originalColor, Material baseMaterial)
+    {
+        isTransitioning = true;
+
+        // Transition to the target color
+        yield return StartCoroutine(LerpColor(originalColor, targetColor, duration, baseMaterial));
+
+        // Transition back to the original color
+        yield return StartCoroutine(LerpColor(targetColor, originalColor, duration, baseMaterial));
+
+        isTransitioning = false;
+    }
+
+    IEnumerator LerpColor(Color fromColor, Color toColor, float duration, Material baseMaterial)
+    {
+        float time = 0f;
+        while (time < duration)
+        {
+            baseMaterial.color = Color.Lerp(fromColor, toColor, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        baseMaterial.color = toColor; // Ensure the final color is set
+    }
+
     public void TriggerFlip(Note note, bool state)
     {
         note.isOnTrigger = state;
@@ -77,6 +125,10 @@ public class NoteReceiver : MonoBehaviour
         var pressedPosition = initialPosition;
         pressedPosition.y -= 0.3f;
         redTile.transform.position = pressedPosition;
+        if (!isTransitioning)
+        {
+            StartCoroutine(ChangeColorOnce(Color.red, originalColorRed, baseMaterialRed));
+        }
         try
         {
             if (redNote != null && redNote.isOnTrigger)
@@ -113,6 +165,10 @@ public class NoteReceiver : MonoBehaviour
         var pressedPosition = initialPosition;
         pressedPosition.y -= 0.3f;
         blueTile.transform.position = pressedPosition;
+        if (!isTransitioning)
+        {
+            StartCoroutine(ChangeColorOnce(Color.blue, originalColorBlue, baseMaterialBlue));
+        }
         try
         {
             if (blueNote != null && blueNote.isOnTrigger)
@@ -148,6 +204,10 @@ public class NoteReceiver : MonoBehaviour
         var pressedPosition = initialPosition;
         pressedPosition.y -= 0.3f;
         greenTile.transform.position = pressedPosition;
+        if (!isTransitioning)
+        {
+            StartCoroutine(ChangeColorOnce(Color.green, originalColorGreen, baseMaterialGreen));
+        }
         try
         {
             if (greenNote != null && greenNote.isOnTrigger)
@@ -172,8 +232,17 @@ public class NoteReceiver : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         greenTile.transform.position = initialPosition;
     }
+
     public void NotePadScratch()
     {
+        StartCoroutine(DiscRoutine());
+    }
+    private IEnumerator DiscRoutine()
+    {
+        if (!isTransitioning)
+        {
+            StartCoroutine(ChangeColorOnce(Color.yellow, originalColorYellow, baseMaterialYellow));
+        }
         try
         {
             if (discNote != null && discNote.GetComponent<Note>().isOnTrigger)
@@ -192,5 +261,6 @@ public class NoteReceiver : MonoBehaviour
         { 
             Debug.Log("MISSED NOTE!"); 
         }
+        yield return new WaitForSeconds(0.1f);
     }
 }
